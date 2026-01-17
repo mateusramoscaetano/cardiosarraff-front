@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --foreground: 240 10% 3.9%;
+  --accent: 240 4.8% 95.9%;
+  --accent-foreground: 240 5.9% 10%;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+@font-face {
+  font-family: "Product Sans";
+  src: url("../fonts/ProductSansRegular.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Volkhov";
+  src: url("../fonts/Volkhov-Regular.ttf") format("truetype");
+  font-display: swap;
+
+}
+
+
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+@layer base {
+  .table-color-style {
+    @apply bg-[#f2f2f2] text-[#1e1e1e] dark:bg-zinc-900 dark:text-gray-100 border-zinc-200 dark:border-zinc-700
+  }
+}
+
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .print-hidden {
+    @media print {
+      display: none !important;
+    }
+  }
+}
+
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+}
+
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+tr:first-child td:first-child {
+  border-top-left-radius: 24px;
+}
+
+tr:first-child td:last-child {
+  border-top-right-radius: 24px;
+}
+
+tr:last-child td:first-child {
+  border-bottom-left-radius: 24px;
+}
+
+tr:last-child td:last-child {
+  border-bottom-right-radius: 24px;
+}
+
+.hover-parent {
+  position: relative;
+}
+
+.hover-parent .hover-image {
+  transition: filter
+}
+
+.hover-parent:hover .hover-image {
+  filter: brightness(0) invert(1);
+}
+
+.hover-image {
+  transition: filter 0.3s;
+  width: auto;
+}
+
+.hover-image:hover {
+  filter: brightness(0) invert(1);
+}
+
+
+::-webkit-calendar-picker-indicator {
+  right: 4px;
+  position: absolute;
+  display: none;
+
+}
+
+/* Estilos para impressão e geração de PDF */
+.print-mode {
+  width: 794px !important;
+  /* Largura A4 em pixels */
+  min-height: 1123px !important;
+  /* Altura A4 em pixels */
+  padding: 20px 30px !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.print-mode .no-print {
+  display: none !important;
+}
+
+/* Estilos de impressão */
+@media print {
+
+  /* Força a impressão com cores de fundo */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* Define o tamanho do papel como A4 */
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  /* Ajusta o container principal para A4 */
+  body {
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Remove elementos desnecessários na impressão */
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Preserva cores de fundo e bordas */
+  .bg-primary {
+    background-color: var(--primary) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Garante que as imagens sejam impressas */
+  img {
+    display: block !important;
+    page-break-inside: avoid;
+  }
+
+  /* Evita quebras de página indesejadas */
+  .form-section {
+    page-break-inside: avoid;
+  }
+
+  /* Remove sombras e efeitos que podem não imprimir bem */
+  * {
+    box-shadow: none !important;
+  }
+}
+
+.bg-requisition {
+  background-image: url("/BG_EXAVET_GRANDE.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+
+}
