@@ -96,7 +96,7 @@ export default function ExamPortalPage({}: IExamPortalPageProps) {
             <div className="flex flex-col w-full mt-4 justify-between">
               <motion.div
                 variants={{
-                  visible: { y: 0, zIndex: 20 },
+                  visible: { y: 0, zIndex: 60 },
                   hidden: { y: "-100%", zIndex: 1 },
                 }}
                 animate={hidden ? "hidden" : "visible"}
@@ -115,7 +115,7 @@ export default function ExamPortalPage({}: IExamPortalPageProps) {
                   className="hover:cursor-pointer"
                 >
                   <Image
-                    src="/Logo_Home.png"
+                    src="/CARDIO-SARRAFF.svg"
                     width={159}
                     height={25}
                     alt="cora-logo"
