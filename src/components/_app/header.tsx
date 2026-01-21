@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import { scrollToSection } from "@/utils/ScrollToSection";
 import { MenuButton } from "@/components/buttons/menu-button";
 import cn from "@/utils/cn";
+import { useRouter } from "next/navigation";
 
 export function  Header() {
   const [hidden, setHidden] = useState(false);
@@ -69,6 +70,8 @@ export function  Header() {
     color: "#D1BAA2",
     cursor: "pointer",
   };
+
+  const router = useRouter();
 
   return (
     <>
@@ -261,6 +264,7 @@ export function  Header() {
                           whileTap={{ scale: 0.98 }}
                           transition={{ duration: 0.2 }}
                           className="w-full bg-primary text-white font-semibold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 border-2 border-[#5C4373] hover:bg-slate-100"
+                          onClick={() => router.push('/exam-portal')}
                         >
                           Portal de Exames
                         </motion.button>
@@ -333,6 +337,7 @@ export function  Header() {
                 </div>
                 <div className="flex gap-4">
                   <Button
+                    onClick={() => router.push('/')}
                     className={`!bg-white !border-2  ${
                       isScrolled
                         ? "!border-[#4A3560] hover:!bg-slate-100 !text-[#4A3560]"
@@ -342,13 +347,14 @@ export function  Header() {
                     Agendar
                   </Button>
                   <Button
+                  onClick={() => router.push('/exam-portal')}
                     className={`!bg-white !text-[#5C4373] hover:!bg-[#8B7AA3] hover:!text-white  ${
                       isScrolled
                         ? "!bg-primary !text-white hover:!bg-[#8B7AA3] hover:!text-white"
                         : "!bg-white !text-[#5C4373] hover:!bg-[#8B7AA3] hover:!text-white"
                     }`}
                   >
-                    Portal de Exames
+                
                   </Button>
                 </div>
               </>
