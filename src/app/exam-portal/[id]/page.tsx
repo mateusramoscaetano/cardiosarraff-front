@@ -96,7 +96,7 @@ export default function ExamPortalPage({}: IExamPortalPageProps) {
             <div className="flex flex-col w-full mt-4 justify-between">
               <motion.div
                 variants={{
-                  visible: { y: 0, zIndex: 60 },
+                  visible: { y: 0, zIndex: 100 },
                   hidden: { y: "-100%", zIndex: 1 },
                 }}
                 animate={hidden ? "hidden" : "visible"}

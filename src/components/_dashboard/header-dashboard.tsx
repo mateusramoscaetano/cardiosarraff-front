@@ -79,7 +79,7 @@ export function HeaderDashboard({ user }: IHeaderDashboardProps) {
             onClick={handleGoToExamPortal}
             ref={logoutRef}
             className="absolute text-sm cursor-pointer text-white font-medium
-          justify-center flex items-center right-3 top-14 z-70 w-24 h-10 max-w-lg
+          justify-center flex items-center right-3 top-14 z-[110] w-24 h-10 max-w-lg
           gap-4 border bg-primary p-2 shadow-lg duration-200 data-[state=open]:animate-in 
           sm:rounded-lg"
             aria-labelledby="logout-menu"

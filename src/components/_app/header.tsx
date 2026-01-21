@@ -77,7 +77,7 @@ export function  Header() {
     <>
       <motion.div
         variants={{
-          visible: { y: 0, zIndex: 60 },
+          visible: { y: 0, zIndex: 100 },
           hidden: { y: "-100%", zIndex: 1, backdropFilter: "blur(4px)" },
         }}
         animate={hidden ? "hidden" : "visible"}
