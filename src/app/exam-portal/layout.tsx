@@ -1,5 +1,4 @@
 "use client";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { usePathname } from "next/navigation";
 
 export default function ExamPortalLayout({
@@ -14,7 +13,6 @@ export default function ExamPortalLayout({
 
   return (
     <div className="font-productSans">
-      {!isRequisitionPage && <ThemeToggle />}
       {children}
     </div>
   );
