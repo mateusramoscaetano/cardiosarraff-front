@@ -1,196 +1,120 @@
 "use client";
+
 import Image from "next/image";
-import { Button } from "../ui/button";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { Facebook, Instagram, Heart } from "lucide-react";
 
 export function Footer() {
-  const router = useRouter();
-
-  const handleGoToExamPortal = () => {
-    router.push("/exam-portal");
-  };
-
-  const handlePhoneClick = () => {
-    window.open("tel:+554130810360", "_self");
-  };
-
-  const handleMapsClick = () => {
-    const address =
-      "R. Voluntários da Pátria, 1393, Centro, São José dos Pinhais - PR";
-    const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-      address
-    )}`;
-    window.open(mapsUrl, "_blank");
-  };
-
-  const handleInstagramClick = () => {
-    // Substitua pela URL real do Instagram da Exavet
-    window.open("https://www.instagram.com/exavet.diagnostico", "_blank");
-  };
-
-  const handleScrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const handleGoToContact = () => {
-    router.push("/contact");
-  };
-
   return (
-    <footer className="w-full bg-primary text-white">
-      <div className="w-full max-w-[1440px] mx-auto px-4 py-12">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          {/* Brand/Slogan Section */}
-          <div className="flex flex-col space-y-4 items-center md:justify-center xl:justify-start xl:items-end">
-            <div className="flex items-center space-x-2">
-              <Image
-                src={"/Logo_Home.png"}
-                width={100}
-                height={100}
-                alt="logo"
-                className="w-auto h-auto"
-              />
+    <footer className="bg-gradient-to-br from-[#5C4373] via-[#6B4F7F] to-[#5C4373] text-white py-16">
+      <div className="container mx-auto px-4">
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div>
+            <div className="mb-6">
+              <div className="relative w-56 h-24">
+                <Image
+                  src="/logohorizontalbranca.svg"
+                  alt="Cardio Sarraff"
+                  fill
+                  className="object-contain"
+                />
+              </div>
             </div>
-            <p className="text-base text-white/90 max-w-xs">
-              Cuidar bem é a nossa <br /> maior especialidade.
+            <p className="text-white/90 mb-6 leading-relaxed">
+              Excelência em Cardiologia Veterinária. Consultas e exames com o carinho que o seu Pet merece!
             </p>
-          </div>
-
-          {/* Navigation Menu Section */}
-          <div className="flex flex-col space-y-4 items-center">
-            <nav className="flex gap-4 lg:gap-4 md:flex-col md:items-start xl:pl-20">
-              <h3 className="text-lg font-semibold text-white text-center">
-                Menu
-              </h3>
-              <button
-                onClick={handleScrollToTop}
-                className=" text-white/90 hover:text-white transition-colors cursor-pointer"
+            <div className="flex gap-4">
+              <Link
+                href="https://www.facebook.com/cardiologiasarraff"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-all duration-300 hover:scale-110 backdrop-blur-sm"
               >
-                Início
-              </button>
-              <button
-                onClick={() => {
-                  const element = document.getElementById("about");
-                  if (element) {
-                    element.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}
-                className=" text-white/90 hover:text-white transition-colors cursor-pointer"
+                <Facebook className="h-5 w-5" />
+              </Link>
+              <Link
+                href="https://www.instagram.com/cardiosarraff/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-all duration-300 hover:scale-110 backdrop-blur-sm"
               >
-                Sobre Nós
-              </button>
-              <button
-                onClick={() => {
-                  const element = document.getElementById("service");
-                  if (element) {
-                    element.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}
-                className=" text-white/90 hover:text-white transition-colors cursor-pointer"
-              >
-                Serviços
-              </button>
-              <button
-                onClick={handleGoToContact}
-                className=" text-white/90 hover:text-white transition-colors cursor-pointer"
-              >
-                Contato
-              </button>
-            </nav>
-          </div>
-
-          {/* Contact Information Section */}
-          <div className="flex flex-col space-y-4 items-center">
-            <div className="flex flex-col space-y-3 gap-3">
-              {/* Instagram */}
-              <div className="flex items-center space-x-3">
-                <button
-                  onClick={handleInstagramClick}
-                  className="cursor-pointer hover:opacity-80 transition-opacity duration-300 flex items-center gap-2"
-                >
-                  <Image
-                    src={"/icons/instagram.svg"}
-                    width={22}
-                    height={22}
-                    alt="instagram"
-                  />
-                  <span className="text-base text-white/90">
-                    Acesse nosso Instagram
-                  </span>
-                </button>
-              </div>
-
-              {/* Address */}
-              <div className="flex items-center space-x-3">
-                <button
-                  onClick={handleMapsClick}
-                  className="cursor-pointer hover:opacity-80 transition-opacity duration-300"
-                >
-                  <Image
-                    src={"/icons/maps.svg"}
-                    width={22}
-                    height={22}
-                    alt="maps"
-                  />
-                </button>
-                <button
-                  onClick={handleMapsClick}
-                  className="text-base text-white/90 hover:text-white transition-colors cursor-pointer text-left"
-                >
-                  R. Voluntários da Pátria 1393
-                  <br />
-                  Centro - São José dos Pinhais
-                </button>
-              </div>
-
-              {/* Phone */}
-              <div className="flex items-center space-x-3">
-                <button
-                  onClick={handlePhoneClick}
-                  className="cursor-pointer hover:opacity-80 transition-opacity duration-300"
-                >
-                  <Image
-                    src={"/icons/phone.svg"}
-                    width={22}
-                    height={22}
-                    alt="phone"
-                  />
-                </button>
-                <button
-                  onClick={handlePhoneClick}
-                  className="text-base text-white/90 hover:text-white transition-colors cursor-pointer"
-                >
-                  41 3081-0360
-                </button>
-              </div>
+                <Instagram className="h-5 w-5" />
+              </Link>
             </div>
           </div>
 
-          {/* Action Buttons Section */}
-          <div className="flex flex-col space-y-4 items-center md:justify-center xl:justify-start">
-            <div className="flex flex-col space-y-3 items-center md:justify-center xl:justify-start">
-              <Button
-                onClick={handleGoToExamPortal}
-                className="bg-exa-pink w-full text-base text-[#1e1e1e] min-w-[204px] max-w-[204px] h-[40px] lg:h-[60px] hover:bg-exa-pink/90 rounded-lg font-semibold"
-              >
-                Download de Exames
-              </Button>
-              <Button
-                onClick={handleGoToExamPortal}
-                className="bg-exa-pink text-base font-semibold w-full text-[#1e1e1e] min-w-[204px] max-w-[204px] h-[40px] lg:h-[60px] hover:bg-exa-pink/90 rounded-lg"
-              >
-                Requisição de Exames
-              </Button>
-            </div>
+          <div>
+            <h3 className="text-2xl font-bold mb-6 text-white">Links Rápidos</h3>
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href="#sobre"
+                  className="text-white/80 hover:text-white transition-all duration-300 hover:translate-x-1 inline-block"
+                >
+                  Sobre
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#servicos"
+                  className="text-white/80 hover:text-white transition-all duration-300 hover:translate-x-1 inline-block"
+                >
+                  Serviços
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#equipe"
+                  className="text-white/80 hover:text-white transition-all duration-300 hover:translate-x-1 inline-block"
+                >
+                  Nossa Equipe
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#localizacao"
+                  className="text-white/80 hover:text-white transition-all duration-300 hover:translate-x-1 inline-block"
+                >
+                  Localização
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#contato"
+                  className="text-white/80 hover:text-white transition-all duration-300 hover:translate-x-1 inline-block"
+                >
+                  Contato
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-2xl font-bold mb-6 text-white">Contato</h3>
+            <ul className="space-y-3 text-white/80">
+              <li className="flex items-center gap-2">
+                <span className="font-semibold text-white">CLINIVET:</span>
+                <span>(41) 3257-4326</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="font-semibold text-white">Domiciliar/Volante:</span>
+                <span>(41) 99191-0080</span>
+              </li>
+              <li className="mt-6 flex items-center gap-2">
+                <span className="font-semibold text-white">Email:</span>
+                <span>contato@cardiosarraff.com.br</span>
+              </li>
+            </ul>
           </div>
         </div>
 
-        {/* Copyright Section */}
-        <div className="border-t border-white/20 pt-6">
-          <div className="flex justify-center">
-            <p className="text-sm text-white/70">Desenvolvido por Nestlab</p>
-          </div>
+        <div className="border-t border-white/20 pt-8 text-center">
+          <p className="text-white/80 flex items-center justify-center gap-2 mb-2">
+            Feito com <Heart className="h-4 w-4 text-red-400" /> para os pets
+          </p>
+          <p className="text-white/60 text-sm">
+            © {new Date().getFullYear()} Cardio Sarraff. Todos os direitos reservados.
+          </p>
         </div>
       </div>
     </footer>

@@ -1,46 +1,33 @@
 "use client";
 
-import { AboutUs } from "@/components/_app/about-us";
-import { ContactSection } from "@/components/_app/contact-section";
-import { ExamCtaSection } from "@/components/_app/exam-cta-section";
-import { FacilityGallery } from "@/components/_app/facility-gallery";
+import { Avaliacoes } from "@/components/_app/avaliacoes";
+import { Contato } from "@/components/_app/contato";
+import { Equipe } from "@/components/_app/equipe";
 import { Footer } from "@/components/_app/footer";
-import { GoogleReviews } from "@/components/_app/google-reviews";
-import { HeadBanner } from "@/components/_app/head-banner";
+import { Galeria } from "@/components/_app/galeria";
 import { Header } from "@/components/_app/header";
-import { HeroSection } from "@/components/_app/hero-section";
-import { LogoBanner } from "@/components/_app/logo-banner";
-import { Products } from "@/components/_app/products";
-import { ToDoctors } from "@/components/_app/to-doctors";
-import { WhatsAppButton } from "@/components/_app/whatsapp-button";
-import Image from "next/image";
+import { Hero } from "@/components/_app/hero";
+import { Localizacao } from "@/components/_app/localizacao";
+import { PortalExames } from "@/components/_app/portal-exames";
+import { Servicos } from "@/components/_app/servicos";
+import { Sobre } from "@/components/_app/sobre";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen w-full flex-col items-center bg-white font-productSans relative overflow-x-hidden">
-      <Image
-        src="/Decore.png"
-        alt="bg_home"
-        width={766}
-        height={1000}
-        className="absolute top-0 -right-48 w-[405px] h-auto md:w-[580px] lg:w-[766px] xl:w-[850px] 2xl:w-[950px] xl:h-auto"
-      />
-
-      <Header />
-
-      <HeroSection />
-      <AboutUs />
-
-      <Products />
-
-      <ExamCtaSection />
-      <LogoBanner />
-      <ToDoctors />
-      <ContactSection />
-      <Footer />
-
-      {/* Botão de WhatsApp flutuante */}
-      <WhatsAppButton />
-    </main>
+    <div className="min-h-screen bg-primary font-productSans">
+    <Header />
+ 
+   <Hero />
+   
+    <Sobre />
+    <Servicos />
+    <Galeria />
+    <PortalExames />
+    <Equipe />
+    <Avaliacoes />
+    <Localizacao />
+    <Contato />
+    <Footer />
+  </div>
   );
 }

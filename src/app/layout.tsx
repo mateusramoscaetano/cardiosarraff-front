@@ -26,8 +26,8 @@ const volkov = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Exavet",
-  description: "Exavet",
+  title: "Cardio Sarraff",
+  description: "Cardio Sarraff",
    other: {
     google: "notranslate",
   },
@@ -40,9 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning translate="no">
-      <head content="notranslate">
-        <GoogleTagManager gtmId="GTM-W55W9RPD" />
-      </head>
+  
       <body
         className={`${poppings.className} ${productSans.className} ${volkov.className} notranslate`}
       >
