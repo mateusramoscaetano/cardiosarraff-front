@@ -354,7 +354,7 @@ export function  Header() {
                         : "!bg-white !text-[#5C4373] hover:!bg-[#8B7AA3] hover:!text-white"
                     }`}
                   >
-                
+                  Portal de Exames
                   </Button>
                 </div>
               </>
