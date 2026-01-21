@@ -87,6 +87,7 @@ export function  Header() {
             ? "bg-white backdrop-blur-md shadow-lg"
             : "bg-primary"
         }`}
+        style={{ zIndex: 100 }}
       >
         <nav className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">

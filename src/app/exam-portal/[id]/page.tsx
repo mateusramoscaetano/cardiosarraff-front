@@ -106,9 +106,10 @@ export default function ExamPortalPage({}: IExamPortalPageProps) {
         2sm:px-14
         sm:px-14
         md:px-14
-        lg:px-24 
-        
+        lg:px-24
+
         w-full h-28 flex flex-row items-center justify-between sticky top-0 bg-white dark:bg-zinc-900 border-b dark:border-zinc-700 p-4"
+        style={{ zIndex: 100 }}
               >
                 <div
                   onClick={handleScrollToTop}
