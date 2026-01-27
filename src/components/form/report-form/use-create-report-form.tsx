@@ -148,25 +148,22 @@ export function UseCreateReportForm({
           onClose();
         }, 1000);
       },
-      onError: (error) => {},
+      onError: (error) => { },
     });
   };
 
   return (
     <>
       <div className={cn("grid", className)} {...props}>
-        <div className="w-full flex items-center justify-end space-x-2">
+        <div className="w-full flex items-center justify-center space-x-2 mb-4">
           {!isOnPetDetailPage && (
             <>
-              <div className="flex items-center justify-between space-x-2">
-                {" "}
-                <DialogCreateClient className="mb-4 w-1/2" isOnForm={true} />
-                <DialogCreatePet
-                  className="mb-4 w-1/2"
-                  isOnForm={true}
-                  isOnClientPage={false}
-                />
-              </div>
+              <DialogCreateClient className="w-1/2" isOnForm={true} />
+              <DialogCreatePet
+                className="w-1/2"
+                isOnForm={true}
+                isOnClientPage={false}
+              />
             </>
           )}
         </div>
@@ -265,9 +262,9 @@ export function UseCreateReportForm({
                             (cn(
                               "text-zinc-600 dark:text-gray-100 text-center flex items-center justify-end mt-2"
                             ),
-                            isError && form.getValues("file") === null
-                              ? "border-2 border-red-500"
-                              : "")
+                              isError && form.getValues("file") === null
+                                ? "border-2 border-red-500"
+                                : "")
                           }
                           icon={false}
                         />
@@ -283,7 +280,7 @@ export function UseCreateReportForm({
               />
             </div>
 
-            <div className="mt-4 flex items-center justify-end">
+            <div className="mt-4 flex items-center justify-center">
               <Button disabled={isLoading} type="submit">
                 {isLoading && (
                   <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />

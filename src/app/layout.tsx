@@ -41,8 +41,8 @@ export default function RootLayout({
         <GoogleTagManagerNoScript gtmId="GTM-W55W9RPD" />
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <Providers>{children}</Providers>
