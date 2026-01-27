@@ -36,7 +36,7 @@ export function LoginExamPortal({}: ILoginExamPortalProps) {
   return (
     <>
       <div className="lg:p-8 mt-8 sm:mt-0">
-        <div className="mx-auto flex w-full flex-col justify-center space-y-4 max-w-[350px] bg-zinc-100 dark:bg-zinc-800 border-2 dark:border-zinc-500 rounded-md p-4 h-auto">
+        <div className="mx-auto flex w-full flex-col justify-center space-y-4 max-w-[350px] bg-zinc-100 dark:bg-zinc-800 border-2 dark:border-zinc-500 rounded-xl p-4 h-auto">
           <div className="flex flex-col space-y-2 text-center">
             <h1 className="text-2xl font-semibold tracking-tight text-center">
               Seja Bem Vindo!

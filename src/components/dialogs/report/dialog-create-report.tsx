@@ -1,7 +1,7 @@
 "use client";
 
 import { UseCreateReportForm } from "@/components/form/report-form/use-create-report-form";
-import { HeadButton } from "@/components/buttons/head-button";
+import { Button } from "@/components/_app/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -28,14 +28,15 @@ export function DialogCreateReport({
     <>
       <Dialog open={isOpen} onOpenChange={setIsOpen} modal={true}>
         <DialogTrigger asChild>
-          <HeadButton
-            size="slim"
-            color="primary"
-            label="Novo Laudo"
-            className={cn(className)}
-          />
+          <Button
+            size="md"
+            variant="primary"
+            className={cn("hover:scale-105 hover:shadow-lg transition-all duration-300", className)}
+          >
+            Novo Laudo
+          </Button>
         </DialogTrigger>
-        <DialogContent className="max-w-[425px] rounded-lg bg-[#f2f2f2] text-black dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700">
+        <DialogContent className="max-w-[425px] rounded-xl bg-[#f2f2f2] text-black dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700">
           <DialogHeader>
             <DialogTitle className="font-bold text-2xl">
               Cadastrar Laudo

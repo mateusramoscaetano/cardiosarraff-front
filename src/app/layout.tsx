@@ -1,33 +1,25 @@
 import type { Metadata } from "next";
-import { Poppins, Volkhov } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import { ThemeProvider } from "./theme-provider";
-import localFont from "next/font/local";
 import {
   GoogleTagManager,
   GoogleTagManagerNoScript,
 } from "../components/google-tag-manager";
 
-const poppings = Poppins({
+const inter = Inter({
   display: "swap",
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
 });
 
-const productSans = localFont({
-  src: "../fonts/ProductSansRegular.ttf",
-  display: "swap",
-});
-
-const volkov = localFont({
-  src: "../fonts/Volkhov-Regular.ttf",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   title: "Cardio Sarraff",
   description: "Cardio Sarraff",
+  icons: {
+    icon: "/favico.svg",
+  },
    other: {
     google: "notranslate",
   },
@@ -42,7 +34,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning translate="no">
   
       <body
-        className={`${poppings.className} ${productSans.className} ${volkov.className} notranslate`}
+        className={`${inter.className} notranslate`}
       >
         <GoogleTagManagerNoScript gtmId="GTM-W55W9RPD" />
         <ThemeProvider

@@ -20,7 +20,7 @@ import cn from "@/utils/cn";
 import { Icons } from "../../ui/icons";
 import { useEffect, useState } from "react";
 import { useClinics } from "@/hooks/clinic/use-clinics";
-import { Button } from "../../ui/button";
+import { Button } from "../../_app/ui/button";
 import { Clinic } from "@/@types/tclinic-table-data";
 import { DialogDeleteClinic } from "@/components/dialogs/clinic/dialog-delete-clinic";
 
@@ -178,7 +178,7 @@ export function UserUpdateClinicForm({
               isError={isError}
             />
 
-            <div className="mt-4 flex items-center justify-center space-x-4">
+            <div className="mt-4 flex items-center justify-end space-x-4">
               <Button disabled={isLoading} type="submit">
                 {isLoading && (
                   <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />

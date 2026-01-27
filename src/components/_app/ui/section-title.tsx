@@ -1,5 +1,5 @@
 interface SectionTitleProps {
-  smallText: string;
+  smallText?: string;
   title: string;
   description?: string;
   smallTextColor?: string;
@@ -16,17 +16,19 @@ export function SectionTitle({
   descriptionColor = "text-gray-600",
 }: SectionTitleProps) {
   return (
-    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-12">
+    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 md:gap-6 mb-8 sm:mb-10 md:mb-12">
       <div className="flex-1">
-        <p className={`text-sm font-semibold ${smallTextColor} mb-2 underline decoration-2 underline-offset-4`}>
-          {smallText}
-        </p>
-        <h2 className={`text-4xl md:text-5xl font-bold ${titleColor} leading-tight`}>
+        {smallText && (
+          <p className={`text-xs sm:text-sm font-semibold ${smallTextColor} mb-2 underline decoration-2 underline-offset-4`}>
+            {smallText}
+          </p>
+        )}
+        <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold ${titleColor} leading-tight`}>
           {title}
         </h2>
       </div>
       {description && (
-        <p className={`text-lg max-w-md leading-relaxed ${descriptionColor}`}>
+        <p className={`text-sm sm:text-base md:text-lg max-w-md leading-relaxed ${descriptionColor}`}>
           {description}
         </p>
       )}

@@ -7,7 +7,11 @@ export function FooterLogin({}: IFooterLoginProps) {
     <>
       <div className="w-full relative min-h-[100px] bg-primary mx-auto gap-8 px-8 flex  justify-center  ">
         <div className="flex mt-7 gap-8">
-          <a>
+          <a
+            href="https://linktr.ee/cardiosarraff"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Image
               src="/whats-icon.png"
               width={28}
@@ -17,8 +21,9 @@ export function FooterLogin({}: IFooterLoginProps) {
             />
           </a>
           <a
-            href="https://www.instagram.com/exavet.diagnostico"
+            href="https://www.instagram.com/cardiosarraff/"
             target="_blank"
+            rel="noopener noreferrer"
           >
             <Image
               src="/instagram-icon.png"
@@ -28,7 +33,7 @@ export function FooterLogin({}: IFooterLoginProps) {
               className="cursor pointer"
             />
           </a>
-          <a href="mailto:contato@exavet.com.br">
+          <a href="mailto:contato@cardiosarraff.com.br">
             <Image
               src="/mail-icon.png"
               width={34.76}

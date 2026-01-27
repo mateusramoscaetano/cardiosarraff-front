@@ -39,7 +39,7 @@ export function DialogUpdateClinic({
             <TableCell colSpan={4}>
               <div
                 className="flex items-center bg-white hover:bg-primary hover:text-white 
-                  rounded-3xl w-full h-[49px] p-4 mb-2 relative hover-parent dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700 dark:hover:bg-primary dark:hover:text-white"
+                  rounded-xl w-full h-[49px] p-4 mb-2 relative hover-parent dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700 dark:hover:bg-primary dark:hover:text-white"
               >
                 <span className="w-[200px] lg:w-[400px]">{item.name}</span>
 

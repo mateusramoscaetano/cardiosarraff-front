@@ -1,13 +1,12 @@
 "use client";
 import { Dispatch, SetStateAction, useState } from "react";
 import { Input } from "../ui/input";
-import { Button } from "../ui/button";
 import { DialogCreateClient } from "../dialogs/client/dialog-create-client";
 import { DialogCreateReport } from "../dialogs/report/dialog-create-report";
 import { DialogCreateClinic } from "../dialogs/clinic/dialog-create-clinic";
 import { DialogCreateDoctor } from "../dialogs/doctor/dialog-create-doctor";
 import { useUser } from "@/hooks/use-user";
-import HeadButton from "../buttons/head-button";
+import { Button } from "../_app/ui/button";
 import { useRouter } from "next/navigation";
 
 interface IHeaderSectionProps {
@@ -54,53 +53,57 @@ export function HeaderSection({
   }
 
   return (
-    <div className="w-full flex flex-col xl:flex-row  mb-9 gap-4 xl:gap-0">
-      <div className="text-black w-full">
+    <div className="w-full flex flex-col md:flex-row md:items-center mb-9 gap-4 md:gap-6">
+      <div className="text-black md:flex-shrink-0">
         <h1 className="font-bold text-3xl dark:text-gray-100">{title}</h1>
         <p className="font-medium text-sm text-[#1e1e1e] dark:text-gray-300">
           {subtitle}
         </p>
       </div>
-      <div className="flex flex-col 2xl:flex-row w-full items-center gap-6 justify-start xl:justify-end">
-        {!hideSearch && (
-          <div className="flex w-full items-center gap-2 md:w-auto">
-            <Input
-              className="w-full md:w-fit border-none text-zinc-600 dark:text-gray-100 bg-[#f2f2f2] dark:bg-zinc-700 rounded-[20.5px] placeholder:text-[#b9b9b9]"
-              icon={true}
-              placeholder={placeholder}
-              onChange={handleChange}
-              onKeyDown={handleKeyPress}
-            />
-            <Button
-              type="button"
-              onClick={() => setSearch(searchValue || undefined)}
-              className="md:hidden rounded-[20.5px]"
-            >
-              Buscar
-            </Button>
-          </div>
-        )}
+      {!hideSearch && (
+        <div className="flex w-full items-center gap-2 md:w-auto md:flex-1 md:justify-end">
+          <Input
+            className="w-full md:w-fit border-none text-zinc-600 dark:text-gray-100 bg-[#f2f2f2] dark:bg-zinc-700 rounded-xl placeholder:text-[#b9b9b9] h-10"
+            icon={true}
+            placeholder={placeholder}
+            onChange={handleChange}
+            onKeyDown={handleKeyPress}
+          />
+          <Button
+            type="button"
+            onClick={() => setSearch(searchValue || undefined)}
+            className="md:hidden rounded-xl"
+          >
+            Buscar
+          </Button>
+        </div>
+      )}
 
+      <div className="flex items-center gap-3 md:flex-shrink-0">
         {page === "client" && <DialogCreateClient isOnForm={false} />}
         {page === "report" &&
           (user?.user.role === "adm" || user?.user.role === "doctor") && (
             <>
               <DialogCreateReport isOnPetDetailPage={false} />
-              <HeadButton
-                size="slim"
-                color="primary"
-                label="Nova Requisição"
+              <Button
+                size="md"
+                variant="primary"
                 onClick={handleCreateRequisition}
-              />
+                className="hover:scale-105 hover:shadow-lg transition-all duration-300"
+              >
+                Nova Requisição
+              </Button>
             </>
           )}
         {user?.user.role === "clinic" && (
-          <HeadButton
-            size="slim"
-            color="primary"
-            label="Nova Requisição"
+          <Button
+            size="md"
+            variant="primary"
             onClick={handleCreateRequisition}
-          />
+            className="hover:scale-105 hover:shadow-lg transition-all duration-300"
+          >
+            Nova Requisição
+          </Button>
         )}
 
         {page === "clinic" && <DialogCreateClinic isOnForm={false} />}

@@ -21,7 +21,7 @@ export function NavbarDashboardButton({
       id={id}
       onClick={onClick}
       className={`w-full h-11 flex py-3 px-6 text-sm
-        text-white rounded-3xl border-none 
+        text-white rounded-xl border-none 
         ${isActive ? "bg-accent" : "hover:bg-accent"}
         justify-start items-center 
         gap-4 mb-2`}

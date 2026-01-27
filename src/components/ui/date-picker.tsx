@@ -52,7 +52,7 @@ export function DatePickerDemo({
               setDate(undefined);
             }
           }}
-          className="rounded-[4px]"
+          className="rounded-xl"
         />
       </PopoverContent>
     </Popover>

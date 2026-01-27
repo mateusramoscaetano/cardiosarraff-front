@@ -35,7 +35,7 @@ export function ExamRequestsSection({ form }: ExamRequestsSectionProps) {
       <FormTitle title="Solicitação de Exames" />
 
       <div className="grid grid-cols-3 gap-2 text-primary">
-        <div className="flex items-center space-x-2  p-4 rounded-md max-h-[100px] border-2 border-pink-card">
+        <div className="flex items-center space-x-2  p-4 rounded-xl max-h-[100px] border-2 border-pink-card">
           <Checkbox id="checkUpI" {...register("examRequests.checkUpI")} />
           <label
             htmlFor="checkUpI"
@@ -48,7 +48,7 @@ export function ExamRequestsSection({ form }: ExamRequestsSectionProps) {
           </label>
         </div>
 
-        <div className="flex items-center space-x-2  p-4 rounded-md max-h-[100px] border-2 border-pink-card">
+        <div className="flex items-center space-x-2  p-4 rounded-xl max-h-[100px] border-2 border-pink-card">
           <Checkbox id="checkUpII" {...register("examRequests.checkUpII")} />
           <label
             htmlFor="checkUpII"
@@ -62,7 +62,7 @@ export function ExamRequestsSection({ form }: ExamRequestsSectionProps) {
           </label>
         </div>
 
-        <div className="flex items-center space-x-2  p-4 rounded-md max-h-[100px] border-2 border-pink-card">
+        <div className="flex items-center space-x-2  p-4 rounded-xl max-h-[100px] border-2 border-pink-card">
           <Checkbox
             id="checkUpCompleto"
             {...register("examRequests.checkUpCompleto")}
@@ -79,7 +79,7 @@ export function ExamRequestsSection({ form }: ExamRequestsSectionProps) {
           </label>
         </div>
 
-        <div className="flex items-center space-x-2  p-4 rounded-md max-h-[100px] bg-pink-card">
+        <div className="flex items-center space-x-2  p-4 rounded-xl max-h-[100px] bg-pink-card">
           <Checkbox
             id="perfilFelino"
             {...register("examRequests.perfilFelino")}
@@ -96,7 +96,7 @@ export function ExamRequestsSection({ form }: ExamRequestsSectionProps) {
           </label>
         </div>
 
-        <div className="flex items-center space-x-2  p-4 rounded-md max-h-[100px] bg-pink-card">
+        <div className="flex items-center space-x-2  p-4 rounded-xl max-h-[100px] bg-pink-card">
           <Checkbox
             id="perfilGeriatrico"
             {...register("examRequests.perfilGeriatrico")}
@@ -113,7 +113,7 @@ export function ExamRequestsSection({ form }: ExamRequestsSectionProps) {
           </label>
         </div>
 
-        <div className="flex items-center space-x-2  p-4 rounded-md max-h-[100px] bg-pink-card">
+        <div className="flex items-center space-x-2  p-4 rounded-xl max-h-[100px] bg-pink-card">
           <Checkbox
             id="perfilHepático"
             {...register("examRequests.perfilHepatico")}
@@ -132,7 +132,7 @@ export function ExamRequestsSection({ form }: ExamRequestsSectionProps) {
       </div>
 
       <div className="grid grid-cols-2 gap-2 mt-2 text-primary">
-        <div className="flex items-center space-x-2  p-4 rounded-md max-h-[50px] border-2 border-pink-card">
+        <div className="flex items-center space-x-2  p-4 rounded-xl max-h-[50px] border-2 border-pink-card">
           <Checkbox
             id="perfilNeoplastico"
             {...register("examRequests.perfilNeoplastico")}
@@ -148,7 +148,7 @@ export function ExamRequestsSection({ form }: ExamRequestsSectionProps) {
           </label>
         </div>
 
-        <div className="flex items-center space-x-2  p-4 rounded-md max-h-[50px] border-2 border-pink-card">
+        <div className="flex items-center space-x-2  p-4 rounded-xl max-h-[50px] border-2 border-pink-card">
           <Checkbox
             id="perfilRenal"
             {...register("examRequests.perfilRenal")}
@@ -164,7 +164,7 @@ export function ExamRequestsSection({ form }: ExamRequestsSectionProps) {
           </label>
         </div>
 
-        <div className="flex items-center space-x-2  p-4 rounded-md max-h-[50px] bg-pink-card">
+        <div className="flex items-center space-x-2  p-4 rounded-xl max-h-[50px] bg-pink-card">
           <Checkbox
             id="perfilPancreaticoCaninoI"
             {...register("examRequests.perfilPancreaticoCaninoI")}
@@ -181,7 +181,7 @@ export function ExamRequestsSection({ form }: ExamRequestsSectionProps) {
           </label>
         </div>
 
-        <div className="flex items-center space-x-2  p-4 rounded-md max-h-[50px]  bg-pink-card">
+        <div className="flex items-center space-x-2  p-4 rounded-xl max-h-[50px]  bg-pink-card">
           <Checkbox
             id="perfilPancreaticoFelinoI"
             {...register("examRequests.perfilPancreaticoFelinoI")}
@@ -198,7 +198,7 @@ export function ExamRequestsSection({ form }: ExamRequestsSectionProps) {
           </label>
         </div>
 
-        <div className="flex items-center space-x-2  p-4 rounded-md max-h-[25px] border-2 border-pink-card">
+        <div className="flex items-center space-x-2  p-4 rounded-xl max-h-[25px] border-2 border-pink-card">
           <Checkbox
             id="lipasePancreaticaCanina"
             {...register("examRequests.lipasePancreaticaCanina")}
@@ -212,7 +212,7 @@ export function ExamRequestsSection({ form }: ExamRequestsSectionProps) {
           </label>
         </div>
 
-        <div className="flex items-center space-x-2  p-4 rounded-md max-h-[25px] border-2 border-pink-card">
+        <div className="flex items-center space-x-2  p-4 rounded-xl max-h-[25px] border-2 border-pink-card">
           <Checkbox
             id="lipasePancreaticaFelina"
             {...register("examRequests.lipasePancreaticaFelina")}
@@ -226,7 +226,7 @@ export function ExamRequestsSection({ form }: ExamRequestsSectionProps) {
           </label>
         </div>
 
-        <div className="flex items-center space-x-2 border p-4 rounded-md max-h-[40px] bg-pink-card">
+        <div className="flex items-center space-x-2 border p-4 rounded-xl max-h-[40px] bg-pink-card">
           <Checkbox
             id="coproparasitologico"
             {...register("examRequests.parasitological")}
@@ -242,7 +242,7 @@ export function ExamRequestsSection({ form }: ExamRequestsSectionProps) {
           </label>
         </div>
 
-        <div className="flex items-center space-x-2 border p-4 rounded-md max-h-[40px] bg-pink-card">
+        <div className="flex items-center space-x-2 border p-4 rounded-xl max-h-[40px] bg-pink-card">
           <Checkbox id="urinálise" {...register("examRequests.urinalysis")} />
           <label
             htmlFor="urinálise"
@@ -258,7 +258,7 @@ export function ExamRequestsSection({ form }: ExamRequestsSectionProps) {
 
       <div>
         {/* Citologia and Lesion Distribution */}
-        <div className="flex items-center text-primary  py-1 px-4 rounded-md mt-2 border-2 border-pink-card relative">
+        <div className="flex items-center text-primary  py-1 px-4 rounded-xl mt-2 border-2 border-pink-card relative">
           <div className="items-center justify-between space-x-2 w-full max-w-[250px]">
             <Checkbox id="cytology" {...register("examRequests.cytology")} />
             <label
@@ -333,7 +333,7 @@ export function ExamRequestsSection({ form }: ExamRequestsSectionProps) {
         </div>
 
         <div className="grid grid-cols-3 gap-2 mt-2">
-          <div className="flex items-center text-primary space-x-2  bg-pink-card p-4 rounded-md col-span-1 max-h-[102px] ">
+          <div className="flex items-center text-primary space-x-2  bg-pink-card p-4 rounded-xl col-span-1 max-h-[102px] ">
             <Checkbox
               id="citologiaOtologicaUnilateral"
               {...register("examRequests.citologiaOtologicaUnilateral")}
@@ -349,7 +349,7 @@ export function ExamRequestsSection({ form }: ExamRequestsSectionProps) {
             </label>
           </div>
 
-          <div className="flex flex-col text-primary bg-pink-card py-2 px-4 rounded-md col-span-2 ">
+          <div className="flex flex-col text-primary bg-pink-card py-2 px-4 rounded-xl col-span-2 ">
             <div className="flex items-center space-x-2 mb-2">
               <Checkbox
                 id="citologiaDaPeleChecked"
@@ -483,7 +483,7 @@ export function ExamRequestsSection({ form }: ExamRequestsSectionProps) {
         </div>
       </div>
 
-      <div className="space-y-4 border p-4 rounded-md">
+      <div className="space-y-4 border p-4 rounded-xl">
         <h3 className="text-lg font-semibold">Hematologia/hemostasia</h3>
         <div className="grid grid-cols-4">
           <div className="flex items-center space-x-2">

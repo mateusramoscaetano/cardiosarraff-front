@@ -53,7 +53,7 @@ export function ReportTableClientPage({
         <IsLoadingTable />
       ) : reports ? (
         <div className="relative w-full">
-          <Table className="w-full table-color-style rounded-3xl  relative p-3">
+          <Table className="w-full table-color-style rounded-xl  relative p-3">
             <TableHeader className="font-medium text-sm dark:text-gray-300">
               <TableRow className=" w-full flex  px-4">
                 <TableHead className="text-start w-[200px] lg:w-[400px]">

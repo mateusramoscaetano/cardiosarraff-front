@@ -18,7 +18,7 @@ export function MenuButton({ icon, onClick }: MenuButtonProps) {
           transition: { duration: 0.25 },
         }}
         whileTap={{ scale: 1 }}
-        className="w-8 h-8 md:w-16 md:h-16 bg-primary rounded-lg  font-bold text-white tracking-normal overflow-hidden flex items-center justify-center "
+        className="w-8 h-8 md:w-16 md:h-16 bg-primary rounded-xl  font-bold text-white tracking-normal overflow-hidden flex items-center justify-center "
       >
         {icon}
       </motion.button>

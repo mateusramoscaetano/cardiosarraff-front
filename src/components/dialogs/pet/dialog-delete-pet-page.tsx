@@ -60,7 +60,7 @@ export function DialogDeletePetPage({
       <AlertDialogTrigger asChild>
         <Button
           type="button"
-          className="rounded-[1.28rem] bg-error-bg justify-center hover:bg-error-bg p-1 text-white gap-2 text-sm  w-[160px] h-10 font-medium"
+          className="rounded-xl bg-error-bg justify-center hover:bg-error-bg p-1 text-white gap-2 text-sm  w-[160px] h-10 font-medium"
         >
           {`Excluir ${page}`}
           <Image

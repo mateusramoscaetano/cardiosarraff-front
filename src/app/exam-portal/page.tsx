@@ -22,7 +22,7 @@ export default function LoginPageClient({}: ILoginPageClientProps) {
         <div className="min-h-screen relative flex-col items-center justify-center lg:grid lg:grid-cols-2 lg:px-0">
           <Link
             href="/"
-            className={cn("absolute left-2 top-4 md:left-10  md:top-10 z-20 ")}
+            className={cn("absolute left-1/2 -translate-x-1/2 top-4 md:left-10 md:translate-x-0 md:top-10 z-20")}
           >
             <Image
               src="/CARDIO-SARRAFF.svg"
@@ -42,7 +42,7 @@ export default function LoginPageClient({}: ILoginPageClientProps) {
 
           <div className="lg:flex relative hidden min-h-full flex-col items-center justify-center bg-primary dark:bg-zinc-800 p-10 text-white dark:border-r dark:border-zinc-700">
             <Image
-              src="/DOG_CAT.jpg"
+              src="/portalcatdog.jpg"
               layout="fill"
               alt="Authentication"
               className="inset-0 object-cover w-1/2 h-full relative"

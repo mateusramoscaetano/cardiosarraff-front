@@ -1,8 +1,8 @@
 "use client";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { Poppins } from "next/font/google";
+import { Inter } from "next/font/google";
 
-const poppings = Poppins({
+const inter = Inter({
   display: "swap",
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
@@ -16,7 +16,7 @@ export default function RequisitionLayout({
   const queryClient = new QueryClient();
   return (
     <QueryClientProvider client={queryClient}>
-      <div className={poppings.className}>{children}</div>
+      <div className={inter.className}>{children}</div>
     </QueryClientProvider>
   );
 }

@@ -84,36 +84,18 @@ export function Avaliacoes() {
   }, []);
 
   return (
-    <section id="avaliacoes" className="py-20 bg-gradient-to-b from-white to-purple-50">
-      <div className="container mx-auto px-4">
+    <section id="avaliacoes" className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-white to-purple-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
-          smallText="Avaliações"
           title="Avaliações"
           description="O que nossos clientes dizem sobre nós"
         />
-
         <div className="max-w-6xl mx-auto">
           <div
             id="featurable-0668a3b3-74c5-45e9-a810-b31338da3d4f"
             data-featurable-async
             data-location-code="pt-BR"
           ></div>
-        </div>
-      </div>
-    </section>
-  );
-
-  return (
-    <section id="avaliacoes" className="py-20 bg-gradient-to-b from-white to-purple-50">
-      <div className="container mx-auto px-4">
-        <SectionTitle
-          smallText="Avaliações"
-          title="Avaliações"
-          description="O que nossos clientes dizem sobre nós"
-        />
-
-        <div className="max-w-6xl mx-auto">
-          <div id="featurable-0668a3b3-74c5-45e9-a810-b31338da3d4f" data-featurable-async data-location-code="pt-BR"></div>
         </div>
       </div>
     </section>

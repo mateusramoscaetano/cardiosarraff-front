@@ -14,7 +14,7 @@ import { AxiosError } from "axios";
 import { TErrorAlreadyRegistered } from "@/@types/terror-email-already-registered";
 import { DefaultField } from "../fields/default-field";
 import formatPhone from "@/utils/formatPhone";
-import { Button } from "../../ui/button";
+import { Button } from "../../_app/ui/button";
 import { Icons } from "../../ui/icons";
 import { useClinics } from "@/hooks/clinic/use-clinics";
 
@@ -157,7 +157,7 @@ export function UserCreateClinic({
               isError={isError}
             />
 
-            <div className="mt-4 flex items-center justify-center">
+            <div className="mt-4 flex items-center justify-end">
               <Button disabled={isLoading} type="submit">
                 {isLoading && (
                   <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />

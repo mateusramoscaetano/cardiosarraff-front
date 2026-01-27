@@ -13,7 +13,7 @@ import {
   FormLabel,
   FormMessage,
 } from "../form";
-import { Button } from "../../ui/button";
+import { Button } from "../../_app/ui/button";
 import { Icons } from "../../ui/icons";
 
 import { creatPetFormSchema, useCreatePet } from "@/hooks/pets/use-create-pet";
@@ -206,7 +206,7 @@ export function UserUpdatePetForm({
             />
           </div>
 
-          <div className="mt-4 flex items-center justify-center">
+          <div className="mt-4 flex items-center justify-end">
             <Button
               disabled={isLoading}
               type="button"

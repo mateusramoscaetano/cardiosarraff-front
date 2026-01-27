@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import cn from "@/utils/cn";
 import { Form } from "../form";
-import { Button } from "../../ui/button";
+import { Button } from "../../_app/ui/button";
 import { Icons } from "../../ui/icons";
 import { createClientFormSchema } from "@/hooks/client/use-create-client";
 import { AxiosError } from "axios";
@@ -129,7 +129,7 @@ export function UserCreateDoctorForm({
             onInput={handlePhoneInput}
           />
 
-          <div className="mt-4 flex items-center justify-center">
+          <div className="mt-4 flex items-center justify-end">
             <Button disabled={isLoading} type="submit">
               {isLoading && (
                 <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />

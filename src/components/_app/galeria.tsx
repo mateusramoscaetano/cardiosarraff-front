@@ -18,19 +18,17 @@ export function Galeria() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
-    <section id="galeria" className="py-20 bg-gradient-to-b from-purple-50 to-white">
-      <div className="container mx-auto px-4">
+    <section id="galeria" className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-purple-50 to-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
-          smallText="Galeria"
           title="Galeria de Fotos"
           description="Conheça um pouco do nosso ambiente e estrutura"
         />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {imagens.map((imagem, index) => (
             <div
               key={index}
-              className="relative aspect-square rounded-2xl overflow-hidden group cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+              className="relative aspect-video rounded-xl overflow-hidden group cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
               onClick={() => setSelectedImage(imagem)}
             >
               <Image

@@ -1,5 +1,5 @@
 import { DataItem } from "@/@types/ireport-table-data";
-import { HeadButton } from "@/components/buttons/head-button";
+import { Button } from "@/components/_app/ui/button";
 import { PetDetail } from "@/components/tables/pet-detail-table";
 import {
   Dialog,
@@ -78,7 +78,7 @@ export function DialogReportTable({
             <TableCell colSpan={4} className="cursor-pointer">
               <div
                 className="flex items-center bg-white hover:bg-primary hover:text-white dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700 dark:hover:bg-primary dark:hover:text-white
-                rounded-3xl w-full h-[49px] p-4 mb-2 relative hover-parent"
+                rounded-xl w-full h-[49px] p-4 mb-2 relative hover-parent"
               >
                 <span className="w-[200px] lg:w-[400px]">
                   {item.pet.pet_owner.name}
@@ -100,7 +100,7 @@ export function DialogReportTable({
             </TableCell>
           </TableRow>
         </DialogTrigger>
-        <DialogContent className="max-w-[300px] lg:max-w-[460px] rounded-lg bg-[#f2f2f2] text-black dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700">
+        <DialogContent className="max-w-[300px] lg:max-w-[460px] rounded-xl bg-[#f2f2f2] text-black dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700">
           <DialogHeader>
             <DialogTitle className="font-bold text-2xl dark:text-gray-100">
               {name}
@@ -154,9 +154,10 @@ export function DialogReportTable({
           <div className="flex flex-col gap-4">
             <div className="flex flex-col lg:flex-row gap-2">
               {user?.user.role === "adm" && (
-                <HeadButton
-                  label="Enviar para o Cliente"
-                  className="bg-[#4DCB5B]"
+                <Button
+                  size="md"
+                  variant="primary"
+                  className="bg-[#4DCB5B] hover:bg-[#45B850]"
                   onClick={async () => {
                     const petResponse: AxiosResponse<PetDetail> = await api.get(
                       `/pet/${item.pet.id}`
@@ -181,9 +182,10 @@ export function DialogReportTable({
                 />
               )}
               {user?.user.role === "adm" && (
-                <HeadButton
-                  label="Enviar para Clínica"
-                  className="bg-[#4DCB5B]"
+                <Button
+                  size="md"
+                  variant="primary"
+                  className="bg-[#4DCB5B] hover:bg-[#45B850]"
                   onClick={async () => {
                     const clinicResponse = await api.get(
                       `/clinic/${item.Clinic.id}`
@@ -216,7 +218,9 @@ export function DialogReportTable({
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <HeadButton label="Download do Arquivo" />
+                <Button size="md" variant="primary">
+                  Download do Arquivo
+                </Button>
               </a>
 
               {(user?.user.role === "adm" || user?.user.role === "doctor") && (

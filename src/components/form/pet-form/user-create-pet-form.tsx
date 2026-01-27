@@ -20,7 +20,7 @@ import {
   FormLabel,
   FormMessage,
 } from "../form";
-import { Button } from "../../ui/button";
+import { Button } from "../../_app/ui/button";
 import { Icons } from "../../ui/icons";
 import { DefaultField } from "../fields/default-field";
 
@@ -216,7 +216,7 @@ export function UserCreatePetForm({
             </>
           )}
 
-          <div className="mt-4 flex items-center justify-center">
+          <div className="mt-4 flex items-center justify-end">
             <Button disabled={isLoading} type="submit">
               {isLoading && (
                 <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />

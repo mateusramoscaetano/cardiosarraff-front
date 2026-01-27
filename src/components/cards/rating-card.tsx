@@ -18,7 +18,7 @@ export function RatingCard({ name, image, text }: IRatingCardProps) {
       2sm:w-[400px] 2sm:h-[270px]
       3sm:w-[320px] 3sm:h-[300px]
 
-      bg-[#f1f4f5] p-10 relative rounded-[24px] border-black"
+      bg-[#f1f4f5] p-10 relative rounded-xl border-black"
       >
         <div className="mt-8">{text}</div>
         <UserCard className="mt-8" name={name} image={image} />

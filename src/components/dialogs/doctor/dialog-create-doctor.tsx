@@ -1,8 +1,7 @@
 "use client";
 
 import { UserCreateDoctorForm } from "@/components/form/dcotor-form/user-create-doctor-form";
-import { Button } from "@/components/ui/button";
-import HeadButton from "@/components/buttons/head-button";
+import { Button } from "@/components/_app/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -27,15 +26,13 @@ export function DialogCreateDoctor({
       <>
         <Dialog open={isOpen} onOpenChange={setIsOpen} modal={true}>
           <DialogTrigger asChild className={cn(className)}>
-            {isOnForm ? (
-              <Button> Novo Doutor</Button>
-            ) : (
-              <HeadButton size="slim" color="primary" label="Novo Doutor" />
-            )}
+            <Button size="md" variant="primary">
+              Novo Doutor
+            </Button>
           </DialogTrigger>
           <DialogContent
             className={cn(
-              "max-w-[425px] rounded-lg bg-[#f2f2f2] text-black dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700"
+              "max-w-[425px] rounded-xl bg-[#f2f2f2] text-black dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700"
             )}
           >
             <DialogHeader>

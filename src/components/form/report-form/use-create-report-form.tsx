@@ -16,7 +16,7 @@ import {
   useCreateReport,
 } from "@/hooks/reports/use-create-report";
 import { Input } from "../../ui/input";
-import { Button } from "../../ui/button";
+import { Button } from "../../_app/ui/button";
 import { Icons } from "../../ui/icons";
 import { useClinics } from "@/hooks/clinic/use-clinics";
 import { useState, useEffect } from "react";
@@ -155,7 +155,7 @@ export function UseCreateReportForm({
   return (
     <>
       <div className={cn("grid", className)} {...props}>
-        <div className="w-full flex items-center justify-center space-x-2">
+        <div className="w-full flex items-center justify-end space-x-2">
           {!isOnPetDetailPage && (
             <>
               <div className="flex items-center justify-between space-x-2">
@@ -263,7 +263,7 @@ export function UseCreateReportForm({
                           }
                           className={
                             (cn(
-                              "text-zinc-600 dark:text-gray-100 text-center flex items-center justify-center mt-2"
+                              "text-zinc-600 dark:text-gray-100 text-center flex items-center justify-end mt-2"
                             ),
                             isError && form.getValues("file") === null
                               ? "border-2 border-red-500"
@@ -283,7 +283,7 @@ export function UseCreateReportForm({
               />
             </div>
 
-            <div className="mt-4 flex items-center justify-center">
+            <div className="mt-4 flex items-center justify-end">
               <Button disabled={isLoading} type="submit">
                 {isLoading && (
                   <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />

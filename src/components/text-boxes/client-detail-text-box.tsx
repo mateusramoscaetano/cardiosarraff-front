@@ -22,7 +22,7 @@ export function ClientDetailTextBox({
         <div className="font-medium text-sm mb-3 pl-5 dark:text-gray-100">
           {fieldTitle}
         </div>
-        <div className="font-sm flex items-center justify-center rounded-3xl h-12 bg-white text-sm dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700 dark:border-2">
+        <div className="font-sm flex items-center justify-center rounded-xl h-12 bg-white text-sm dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700 dark:border-2">
           {field}
         </div>
       </div>

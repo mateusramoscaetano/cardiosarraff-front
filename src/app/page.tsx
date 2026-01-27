@@ -14,7 +14,7 @@ import { Sobre } from "@/components/_app/sobre";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-primary font-productSans">
+    <div className="min-h-screen bg-primary ">
     <Header />
  
    <Hero />

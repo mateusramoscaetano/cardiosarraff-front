@@ -2,7 +2,9 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/_app/ui/card";
 import { SectionTitle } from "@/components/_app/ui/section-title";
-import { MapPin } from "lucide-react";
+import { Button } from "@/components/_app/ui/button";
+import { MapPin, Truck } from "lucide-react";
+import Link from "next/link";
 
 const localizacoes = [
   {
@@ -16,21 +18,19 @@ const localizacoes = [
 
 export function Localizacao() {
   return (
-    <section id="localizacao" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
+    <section id="localizacao" className="py-12 sm:py-16 md:py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
-          smallText="Localização"
           title="Nossa Localização"
           description="Estamos localizados no melhor lugar para atendê-lo"
         />
-
-        <div className="max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
           {localizacoes.map((local, index) => (
             <Card
               key={index}
-              className="border-2 border-transparent hover:border-[#5C4373] transition-all duration-300 hover:shadow-xl overflow-hidden group w-full"
+              className="border-2 border-[#5C4373] hover:border-[#4A3560] transition-all duration-300 hover:shadow-xl overflow-hidden group w-full bg-white"
             >
-              <div className="relative h-80 overflow-hidden mb-6">
+              <div className="relative h-64 sm:h-80 overflow-hidden mb-4 md:mb-6">
                 <iframe
                   src={local.embedUrl}
                   width="100%"
@@ -42,27 +42,52 @@ export function Localizacao() {
                   className="transition-transform duration-500 group-hover:scale-105"
                 ></iframe>
               </div>
-              <CardHeader className="pt-0">
-                <CardTitle className="flex items-center text-[#5C4373] group-hover:text-[#4A3560] transition-colors duration-300">
-                  <MapPin className="h-5 w-5 mr-2" />
+              <CardHeader className="pt-0 px-4 md:px-6">
+                <CardTitle className="flex items-center text-[#5C4373] group-hover:text-[#4A3560] transition-colors duration-300 text-lg md:text-xl">
+                  <MapPin className="h-4 w-4 md:h-5 md:w-5 mr-2" />
                   {local.nome}
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-2">{local.endereco}</p>
-                <p className="text-[#5C4373] font-semibold mb-4">{local.telefone}</p>
+              <CardContent className="px-4 md:px-6 pb-4 md:pb-6">
+                <p className="text-sm md:text-base text-gray-600 mb-2">{local.endereco}</p>
+                <p className="text-[#5C4373] font-semibold mb-3 md:mb-4 text-base md:text-lg">{local.telefone}</p>
                 <a
                   href={local.mapLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#5C4373] hover:text-[#4A3560] text-sm font-semibold transition-colors duration-300 inline-flex items-center gap-1"
+                  className="text-[#5C4373] hover:text-[#4A3560] text-xs md:text-sm font-semibold transition-colors duration-300 inline-flex items-center gap-1"
                 >
                   Ver no Google Maps
-                  <MapPin className="h-4 w-4" />
+                  <MapPin className="h-3 w-3 md:h-4 md:w-4" />
                 </a>
               </CardContent>
             </Card>
           ))}
+          <Card className="border-2 border-[#5C4373] hover:border-[#4A3560] transition-all duration-300 hover:shadow-2xl overflow-hidden group w-full flex flex-col items-center justify-center relative bg-white hover:scale-[1.02] min-h-[400px] md:min-h-[500px]">
+            <div className="flex flex-col items-center justify-center text-center w-full p-4 md:p-6">
+              <div className="flex items-center justify-center mb-4 md:mb-6">
+                <div className="p-4 md:p-6 bg-[#5C4373]/10 rounded-full group-hover:bg-[#5C4373] transition-all duration-300 group-hover:scale-110">
+                  <Truck className="h-8 w-8 md:h-12 md:w-12 text-[#5C4373] group-hover:text-white transition-colors duration-300" />
+                </div>
+              </div>
+              <h3 className="text-[#5C4373] text-2xl md:text-3xl font-bold mb-3 md:mb-4">
+                Atendimento Volante
+              </h3>
+              <p className="text-gray-600 mb-6 md:mb-8 text-lg md:text-xl font-medium leading-relaxed px-4">
+                Nós vamos até você!
+              </p>
+              <Link
+                href="https://wa.me/5541991910080"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full max-w-xs mx-auto"
+              >
+                <Button variant="primary" className="w-full text-base md:text-lg py-4 md:py-6 font-bold shadow-lg hover:shadow-xl">
+                  Marque sua Consulta
+                </Button>
+              </Link>
+            </div>
+          </Card>
         </div>
       </div>
     </section>

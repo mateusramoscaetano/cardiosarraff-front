@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { HeaderSection } from "./header-section";
 import { ReportTable } from "../tables/report-table";
 import { fetchDataReports } from "@/hooks/reports/use-reports";
 import { fetchDataReportsByClinic } from "@/hooks/reports/user-reports-by-clinic";
@@ -7,6 +6,9 @@ import { useUser } from "@/hooks/use-user";
 import { useQuery } from "react-query";
 import { ReportTableSkeleton } from "../tables/report-table-skeleton";
 import { ReportFilters } from "./report-filters";
+import { DialogCreateReport } from "../dialogs/report/dialog-create-report";
+import { Button } from "../_app/ui/button";
+import { useRouter } from "next/navigation";
 
 interface IReportSectionProps {}
 
@@ -17,6 +19,7 @@ export function ReportSection({}: IReportSectionProps) {
   const [filterValue, setFilterValue] = useState<string | undefined>(undefined);
 
   const { user } = useUser();
+  const router = useRouter();
 
   const filters =
     filterType && filterType !== "all" && filterValue
@@ -69,25 +72,31 @@ export function ReportSection({}: IReportSectionProps) {
   return (
     <>
       <div className="w-full mx-auto px-2 sm:px-4 md:px-8 py-6 flex flex-col">
-        <HeaderSection
-          subtitle="Laudos cadastrados em ordem cronológica"
-          title="Últimos Laudos"
-          placeholder="Pesquisar por cliente, pet ou doutor..."
-          labelButton="Cadastrar Novo Laudo"
-          setSearch={setSearch}
-          page="report"
-          hideSearch={true}
-        />
-        <ReportFilters
-          filterType={filterType}
-          filterValue={filterValue}
-          onFilterTypeChange={setFilterType}
-          onFilterValueChange={setFilterValue}
-          onClearFilters={handleClearFilters}
-          isClinicUser={user?.user.role === "clinic"}
-          search={search}
-          setSearch={setSearch}
-        />
+        <div className="w-full flex flex-col md:flex-row md:items-center mb-9 gap-4 md:gap-6">
+          <div className="text-black md:flex-shrink-0">
+            <h1 className="font-bold text-3xl dark:text-gray-100">Últimos Laudos</h1>
+            <p className="font-medium text-sm text-[#1e1e1e] dark:text-gray-300">
+              Laudos cadastrados em ordem cronológica
+            </p>
+          </div>
+          <div className="flex flex-col md:flex-row w-full md:flex-1 items-center gap-6 md:justify-end">
+            <ReportFilters
+              filterType={filterType}
+              filterValue={filterValue}
+              onFilterTypeChange={setFilterType}
+              onFilterValueChange={setFilterValue}
+              onClearFilters={handleClearFilters}
+              isClinicUser={user?.user.role === "clinic"}
+              search={search}
+              setSearch={setSearch}
+            />
+            <div className="flex items-center gap-3 md:flex-shrink-0">
+              {(user?.user.role === "adm" || user?.user.role === "doctor") && (
+                <DialogCreateReport isOnPetDetailPage={false} />
+              )}
+            </div>
+          </div>
+        </div>
         {isLoading || isFetching ? (
           <ReportTableSkeleton />
         ) : reportsData ? (

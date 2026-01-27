@@ -52,7 +52,7 @@ export function DialogDeleteReportPetPage({
         <AlertDialogTrigger asChild>
           <button
             type="button"
-            className="hover:opacity-80 rounded-[20.5px] flex items-center 2.5sm:h-10 2.5sm:w-[203px] 2sm:h-6 2sm:w-[180px] 3sm:h-6 3sm:w-[180px] 2.5sm:text-[13px] 2sm:text-[9px] 3sm:text-[9px] bg-error-bg justify-center hover:bg-error-bg p-1 text-white gap-2 text-sm  w-[160px] h-10 font-medium"
+            className="hover:opacity-80 rounded-xl flex items-center 2.5sm:h-10 2.5sm:w-[203px] 2sm:h-6 2sm:w-[180px] 3sm:h-6 3sm:w-[180px] 2.5sm:text-[13px] 2sm:text-[9px] 3sm:text-[9px] bg-error-bg justify-center hover:bg-error-bg p-1 text-white gap-2 text-sm  w-[160px] h-10 font-medium"
           >
             {`Excluir Arquivo`}
             <Image

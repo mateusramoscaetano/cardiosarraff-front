@@ -21,7 +21,7 @@ export function IndividualExamsSection({ form }: IndividualExamsSectionProps) {
     <div className="">
       <FormTitle title="Solicitação de Exames Individual" />
 
-      <div className="space-y-2 border-2 border-pink-card p-4 rounded-md">
+      <div className="space-y-2 border-2 border-pink-card p-4 rounded-xl">
         <h3 className="text-sm font-semibold">Bioquímica Sérica</h3>
         <div className="grid grid-cols-4 gap-4">
           {biochemicalColumns.map((column, columnIndex) => (
