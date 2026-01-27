@@ -13,12 +13,12 @@ export function PortalExames() {
     <section id="portal-exames" className="relative pt-16 sm:pt-24 md:pt-32 pb-8 sm:pb-12 bg-gradient-to-br from-[#5C4373] to-[#6B4F7F] overflow-visible">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-6 md:gap-8 items-center">
-          <div className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] -mt-16 sm:-mt-24 md:-mt-32 overflow-visible order-2 lg:order-1">
+          <div className="relative w-full h-[320px] sm:h-[300px] md:h-[350px] lg:h-[400px] mt-8 sm:-mt-24 md:-mt-32 overflow-visible order-2 lg:order-1">
             <Image
               src="/catdogat2.webp"
               alt="Portal de Exames"
               fill
-              className="object-contain object-left-bottom rounded-xl scale-110 sm:scale-125 md:scale-150 origin-left-bottom"
+              className="object-contain object-bottom lg:object-left-bottom rounded-xl scale-110 sm:scale-125 md:scale-150 origin-bottom lg:origin-left-bottom"
             />
           </div>
           <div className="flex flex-col gap-4 md:gap-6 relative z-10 justify-center py-4 md:py-8 order-1 lg:order-2">

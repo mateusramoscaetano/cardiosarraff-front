@@ -28,7 +28,7 @@ export function Galeria() {
           {imagens.map((imagem, index) => (
             <div
               key={index}
-              className="relative aspect-video rounded-xl overflow-hidden group cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+              className="relative aspect-[3/2] rounded-xl overflow-hidden group cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
               onClick={() => setSelectedImage(imagem)}
             >
               <Image
@@ -45,7 +45,7 @@ export function Galeria() {
 
       {selectedImage && (
         <div
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/90 z-[150] flex items-center justify-center p-4"
           onClick={() => setSelectedImage(null)}
         >
           <button

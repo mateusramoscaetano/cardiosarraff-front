@@ -19,8 +19,10 @@ export const metadata: Metadata = {
   description: "Cardio Sarraff",
   icons: {
     icon: "/favico.svg",
+    shortcut: "/favico.svg",
+    apple: "/favico.svg",
   },
-   other: {
+  other: {
     google: "notranslate",
   },
 };
@@ -32,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning translate="no">
-  
+
       <body
         className={`${inter.className} notranslate`}
       >
