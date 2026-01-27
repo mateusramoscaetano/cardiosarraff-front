@@ -46,7 +46,7 @@ export function PetDetailTable({ pet }: IPetDetailTableProps) {
         <IsLoadingTable />
       ) : pet ? (
         <div className="relative w-full">
-          <div className="w-full flex flex-col pt-14 pb-20 px-10 rounded-3xl relative table-color-style">
+          <div className="w-full flex flex-col pt-14 pb-20 px-10 rounded-xl relative table-color-style">
             <div className="w-full text-2xl font-semibold tracking-normal mb-3 pl-5 dark:text-gray-100">
               {pet?.name}
             </div>

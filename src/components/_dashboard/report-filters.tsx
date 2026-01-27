@@ -116,13 +116,12 @@ export function ReportFilters({
   };
 
   return (
-    <div className="w-full flex flex-col md:flex-row gap-4 mb-6">
-      <div className="flex flex-col md:flex-row gap-4 flex-1">
+    <div className="flex flex-col md:flex-row gap-4 flex-1 md:items-center">
         <Select
           value={filterType || "all"}
           onValueChange={handleFilterTypeChange}
         >
-          <SelectTrigger className="w-full md:w-[200px] border-none text-zinc-600 dark:text-gray-100 bg-[#f2f2f2] dark:bg-zinc-700 rounded-[20.5px]">
+          <SelectTrigger className="w-full md:w-[200px] border-none text-zinc-600 dark:text-gray-100 bg-[#f2f2f2] dark:bg-zinc-700 rounded-xl">
             <SelectValue placeholder="Filtrar por..." />
           </SelectTrigger>
           <SelectContent>
@@ -137,7 +136,7 @@ export function ReportFilters({
         {(filterType === "all" || filterType) && (
           <>
             <Input
-              className="flex-1 border-none text-zinc-600 dark:text-gray-100 bg-[#f2f2f2] dark:bg-zinc-700 rounded-[20.5px] placeholder:text-[#b9b9b9]"
+              className="flex-1 border-none text-zinc-600 dark:text-gray-100 bg-[#f2f2f2] dark:bg-zinc-700 rounded-xl placeholder:text-[#b9b9b9] h-10"
               icon={filterType === "all"}
               placeholder={
                 filterType === "all"
@@ -160,7 +159,7 @@ export function ReportFilters({
             <Button
               type="button"
               onClick={handleSubmit}
-              className="md:hidden rounded-[20.5px]"
+              className="md:hidden rounded-xl"
             >
               Buscar
             </Button>
@@ -168,13 +167,12 @@ export function ReportFilters({
               onClick={handleClear}
               variant="ghost"
               size="icon"
-              className="rounded-[20.5px] bg-[#f2f2f2] dark:bg-zinc-700 hover:bg-[#e2e2e2] dark:hover:bg-zinc-600"
+              className="rounded-xl bg-[#f2f2f2] dark:bg-zinc-700 hover:bg-[#e2e2e2] dark:hover:bg-zinc-600"
             >
               <X className="h-4 w-4 text-zinc-600 dark:text-gray-100" />
             </Button>
           </>
         )}
-      </div>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { HeadButton } from "@/components/buttons/head-button";
+import { Button } from "@/components/_app/ui/button";
 import { PetDetail } from "@/components/tables/pet-detail-table";
 import {
   Dialog,
@@ -62,7 +62,7 @@ export function DialogReport({
             <TableCell colSpan={4}>
               <div
                 className="flex items-center bg-white hover:bg-primary hover:text-white 
-                  rounded-3xl w-full h-[49px] p-4 mb-2 relative hover-parent dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700 "
+                  rounded-xl w-full h-[49px] p-4 mb-2 relative hover-parent dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700 "
               >
                 <span className="w-[200px] lg:w-[400px] truncate">{`${
                   item.path
@@ -81,7 +81,7 @@ export function DialogReport({
             </TableCell>
           </TableRow>
         </DialogTrigger>
-        <DialogContent className="max-w-[300px] rounded-lg bg-[#f2f2f2] text-black dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700">
+        <DialogContent className="max-w-[300px] rounded-xl bg-[#f2f2f2] text-black dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700">
           <DialogHeader>
             <DialogTitle className="font-bold text-2xl dark:text-gray-100">
               {name}
@@ -111,12 +111,15 @@ export function DialogReport({
             target="_blank"
             rel="noopener noreferrer"
           >
-            <HeadButton label="Download do Arquivo" />
+            <Button size="md" variant="primary">
+              Download do Arquivo
+            </Button>
           </a>
           {(user?.user.role === "adm" || user?.user.role === "doctor") && (
-            <HeadButton
-              label="Enviar para o Whatsapp"
-              className="bg-[#4DCB5B]"
+            <Button
+              size="md"
+              variant="primary"
+              className="bg-[#4DCB5B] hover:bg-[#45B850]"
               onClick={async () => {
                 const petResponse: AxiosResponse<PetDetail> = await api.get(
                   `/pet/${item.petId}`

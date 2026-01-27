@@ -124,7 +124,7 @@ export function FieldSearchForm<T extends FieldValues>({
                 </FormMessage>
               </FormItem>
               {filteredArgsWithIdAndName.length > 0 && (
-                <div className="mt-4 rounded-md border-1 border-slate-400">
+                <div className="mt-4 rounded-xl border-1 border-slate-400">
                   <FormLabel className="p-2">{resultsLabel}</FormLabel>
 
                   <div className="max-h-[200px] overflow-y-auto">
@@ -141,7 +141,7 @@ export function FieldSearchForm<T extends FieldValues>({
                       return (
                         <div
                           key={item.id}
-                          className={`px-3 text-sm border-2 cursor-pointer rounded-md shadow-sm ${
+                          className={`px-3 text-sm border-2 cursor-pointer rounded-xl shadow-sm ${
                             isSelected ? "bg-primary text-white" : ""
                           }`}
                           onClick={handleItemClick}

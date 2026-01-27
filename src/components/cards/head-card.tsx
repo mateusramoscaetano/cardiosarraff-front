@@ -29,7 +29,7 @@ export function HeadCard({
        
 
         
-        rounded-3xl drop-shadow-md bg-white flex items-center flex-row p-4 gap-y-4 gap-x-6"
+        rounded-xl drop-shadow-md bg-white flex items-center flex-row p-4 gap-y-4 gap-x-6"
       >
         <div className={`w-${width} h-${height}`}>
           <Image src={source} width={width} height={height} alt={alt} />

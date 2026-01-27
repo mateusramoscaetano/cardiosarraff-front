@@ -14,7 +14,7 @@ import {
 } from "@/hooks/client/use-update-client";
 import { DefaultField } from "../fields/default-field";
 import { FieldSearchForm } from "../fields/field-search-form";
-import { Button } from "../../ui/button";
+import { Button } from "../../_app/ui/button";
 import { Form } from "../form";
 import { AxiosError } from "axios";
 import { TErrorAlreadyRegistered } from "@/@types/terror-email-already-registered";
@@ -211,7 +211,7 @@ export function UserUpdateClientForm({
             }}
             isError={isError}
           />
-          <div className="mt-4 flex items-center justify-center">
+          <div className="mt-4 flex items-center justify-end">
             <Button disabled={isLoading} type="submit">
               {isLoading && (
                 <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />

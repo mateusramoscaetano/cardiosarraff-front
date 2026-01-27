@@ -120,13 +120,13 @@ export function RegistrationSection({ form }: RegistrationSectionProps) {
                     defaultValue={field.value as string}
                     className="flex items-center"
                   >
-                    <FormItem className="flex items-center justify-center">
+                    <FormItem className="flex items-center justify-end">
                       <FormControl>
                         <RadioGroupItem value="Macho" />
                       </FormControl>
                       <FormLabel className="font-normal">Macho</FormLabel>
                     </FormItem>
-                    <FormItem className="flex items-center justify-center">
+                    <FormItem className="flex items-center justify-end">
                       <FormControl>
                         <RadioGroupItem value="Fêmea" />
                       </FormControl>

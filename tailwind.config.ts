@@ -31,8 +31,7 @@ const config: Config = {
         "2lg": "940px",
       },
       fontFamily: {
-        productSans: ["Product Sans", "sans-serif"],
-        volkhov: ["Volkhov", "sans-serif"],
+        sans: ["Inter", "sans-serif"],
       },
     },
   },

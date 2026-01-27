@@ -1,6 +1,6 @@
 export function IsLoadingTable() {
   return (
-    <div className="flex items-center justify-center min-h-[300px] bg-white dark:bg-zinc-900 rounded-3xl">
+    <div className="flex items-center justify-center min-h-[300px] bg-white dark:bg-zinc-900 rounded-xl">
       <svg
         className="animate-spin w-20 text-white dark:text-gray-100"
         xmlns="http://www.w3.org/2000/svg"

@@ -5,7 +5,7 @@ import ToastProvider from "@/app/toast-provider";
 import { useContext, useEffect, useState } from "react";
 import { useUser } from "@/hooks/use-user";
 import { PageContext } from "@/contexts/type";
-import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { motion, useMotionValueEvent, useScroll, AnimatePresence } from "framer-motion";
 
 import { usePathname, useRouter } from "next/navigation";
 import { HeaderDashboard } from "@/components/_dashboard/header-dashboard";
@@ -129,28 +129,45 @@ export default function ExamPortalPage({}: IExamPortalPageProps) {
                     onClick={() => setShowDropdown(!showDropdown)}
                   />
 
-                  {showDropdown && (
-                    <motion.div
-                      initial={{ opacity: 0, scaleY: 0 }}
-                      animate={{ opacity: 1, scaleY: 1 }}
-                      exit={{ opacity: 0, scaleY: 0, y: 0 }}
-                      transition={{ duration: 0.5 }}
-                      className="absolute  text-white mt-4 p-4 rounded-md 
-                    top-12 right-12 border-zinc-900 h-20 w-58 mb-1"
-                    >
-                      <motion.button
-                        whileHover={{
-                          scale: 1.1,
-                          transition: { duration: 0.25 },
+                  <AnimatePresence>
+                    {showDropdown && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -8, scale: 0.97 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -8, scale: 0.97 }}
+                        transition={{
+                          duration: 0.2,
+                          ease: [0.4, 0, 0.2, 1],
                         }}
-                        whileTap={{ scale: 1 }}
-                        className="w-58 h-4 bg-primary rounded-lg p-3 text-[13px] font-bold text-white flex items-center justify-center tracking-normal overflow-hidden"
-                        onClick={handleGoToExamPortal}
+                        className="absolute top-16 right-0 bg-white/95 backdrop-blur-md rounded-xl shadow-lg border border-white/20 min-w-[140px] p-3 overflow-hidden z-[110]"
+                        style={{
+                          boxShadow:
+                            "0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)",
+                        }}
                       >
-                        Sair
-                      </motion.button>
-                    </motion.div>
-                  )}
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/80 to-white/40 rounded-xl"></div>
+
+                        <div className="relative z-10">
+                          <motion.div
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ 
+                              delay: 0.05,
+                              duration: 0.15,
+                              ease: [0.4, 0, 0.2, 1]
+                            }}
+                            onClick={handleGoToExamPortal}
+                            className="flex items-center space-x-2 p-2 rounded-lg hover:bg-[#5C4373]/5 transition-all duration-300 cursor-pointer group"
+                          >
+                            <div className="w-1.5 h-1.5 bg-[#5C4373] rounded-full group-hover:scale-125 transition-transform duration-300"></div>
+                            <span className="text-[#5C4373] text-sm font-medium group-hover:text-[#5C4373]/80 transition-colors duration-300 ">
+                              Sair
+                            </span>
+                          </motion.div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               </motion.div>
 

@@ -31,7 +31,7 @@ export function DialogUpdatePet({
   id,
   data,
   buttonText = "Editar",
-  buttonClassName = "h-10 rounded-3xl w-[160px] gap-2",
+  buttonClassName = "h-10 rounded-xl w-[160px] gap-2",
   isOnPetDetailPage = false,
 }: IDialogUpdatePetProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -59,7 +59,7 @@ export function DialogUpdatePet({
         </DialogTrigger>
         <DialogContent
           className={cn(
-            "max-w-[425px] rounded-lg bg-[#f2f2f2] text-black dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700"
+            "max-w-[425px] rounded-xl bg-[#f2f2f2] text-black dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700"
           )}
         >
           <DialogHeader>

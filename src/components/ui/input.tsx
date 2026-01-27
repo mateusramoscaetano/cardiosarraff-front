@@ -33,10 +33,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <input
           type={type}
           className={cn(
-            "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 placeholder:text-xs text-black dark:text-gray-100",
+            "flex h-9 w-full rounded-xl border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 placeholder:text-xs text-black dark:text-gray-100",
             { "pl-10": icon },
             {
-              "h-5 border-exa-pink rounded-sm border-t-transparent border-r-transparent border-l-transparent":
+              "h-5 border-exa-pink rounded-xl border-t-transparent border-r-transparent border-l-transparent":
                 buttonSize === "sm",
             },
             { "h-9": buttonSize === "md" },

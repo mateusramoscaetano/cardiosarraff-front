@@ -78,8 +78,8 @@ export function ClientDetailExamPortalTable({
   if (!isMobile) {
     return (
       <div className="relative w-full">
-        <div className="w-full  flex flex-col pt-14 pb-20 px-10 rounded-3xl relative">
-          <div className="w-full table-color-style p-3 rounded-3xl mb-10">
+        <div className="w-full  flex flex-col pt-14 pb-20 px-10 rounded-xl relative">
+          <div className="w-full table-color-style p-3 rounded-xl mb-10">
             <div className="w-full text-2xl font-semibold tracking-normal mb-3 pl-5 text-[#1e1e1e] dark:text-gray-100">
               {client?.name}
             </div>
@@ -116,7 +116,7 @@ export function ClientDetailExamPortalTable({
   return (
     <>
       <div className="relative w-full">
-        <div className="w-full flex flex-col  pt-14 pb-4  rounded-3xl text-[#1e1e1e] dark:text-gray-100 relative">
+        <div className="w-full flex flex-col  pt-14 pb-4  rounded-xl text-[#1e1e1e] dark:text-gray-100 relative">
           <HeaderClient client={client} />
         </div>
         <PetTable data={petData} />

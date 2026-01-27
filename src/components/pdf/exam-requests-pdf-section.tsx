@@ -97,7 +97,7 @@ export function ExamRequestsPDFSection({ data }: ExamRequestsPDFSectionProps) {
           </div>
         )}
         {data.cytology && (
-          <div className="flex flex-col items-start space-y-2 border p-4 rounded-md col-span-full md:col-span-1">
+          <div className="flex flex-col items-start space-y-2 border p-4 rounded-xl col-span-full md:col-span-1">
             <div className="flex items-center space-x-2">
               <div className={textStyles}>• Citologia</div>
             </div>
@@ -125,7 +125,7 @@ export function ExamRequestsPDFSection({ data }: ExamRequestsPDFSectionProps) {
           </div>
         )}
         {data.citologiaDaPele?.checked && (
-          <div className="flex flex-col space-y-2 border p-4 rounded-md col-span-2">
+          <div className="flex flex-col space-y-2 border p-4 rounded-xl col-span-2">
             <div className={textStyles}>• Citologia da Pele</div>
             {data.citologiaDaPele.regiaoAmostra && (
               <div className={`${textStyles} ml-4`}>

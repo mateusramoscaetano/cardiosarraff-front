@@ -11,7 +11,7 @@ export function ReportTableSkeleton() {
   return (
     <div className="relative w-full">
       <div className="overflow-x-auto w-full">
-        <Table className="w-full pt-9 pb-20 px-10 rounded-3xl relative min-w-[900px] table-color-style">
+        <Table className="w-full pt-9 pb-20 px-10 rounded-xl relative min-w-[900px] table-color-style">
           <TableHeader className="font-medium text-sm dark:text-gray-300 border-b-0">
             <TableRow className="w-full flex px-4">
               <TableHead className="text-start w-[200px] lg:w-[400px]">
@@ -39,7 +39,7 @@ export function ReportTableSkeleton() {
                   className="text-sm w-full h-[49px] border-none"
                 >
                   <TableCell colSpan={4} className="cursor-pointer">
-                    <div className="flex items-center bg-white dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700 rounded-3xl w-full h-[49px] p-4 mb-2 relative hover-parent">
+                    <div className="flex items-center bg-white dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700 rounded-xl w-full h-[49px] p-4 mb-2 relative hover-parent">
                       <span className="w-[200px] lg:w-[400px]">
                         <div className={`h-4 bg-gray-200 dark:bg-zinc-700 rounded animate-pulse ${nameWidths[index] || "w-[200px]"}`}></div>
                       </span>

@@ -46,7 +46,7 @@ export function ReportTable({
   return (
     <div className="relative w-full">
       <div className="overflow-x-auto w-full">
-        <Table className="w-full  pt-9 pb-20 px-10 rounded-3xl  relative min-w-[900px] table-color-style">
+        <Table className="w-full  pt-9 pb-20 px-10 rounded-xl  relative min-w-[900px] table-color-style">
           <TableHeader className="font-medium text-sm dark:text-gray-300 border-b-0">
             <TableRow className="w-full flex  px-4">
               <TableHead className="text-start w-[200px] lg:w-[400px]">

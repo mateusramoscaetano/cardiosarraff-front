@@ -51,7 +51,7 @@ export function ClientDetailTable({
   return (
     <>
       <div className="relative w-full">
-        <div className="w-full flex flex-col pt-14 pb-20  px-4 md:px-10 rounded-3xl relative table-color-style">
+        <div className="w-full flex flex-col pt-14 pb-20  px-4 md:px-10 rounded-xl relative table-color-style">
           <div className="w-full text-2xl font-semibold tracking-normal mb-3 pl-5">
             {client?.name}
           </div>

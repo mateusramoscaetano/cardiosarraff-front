@@ -16,7 +16,7 @@ import {
   FormMessage,
 } from "./form";
 import { Input } from "../ui/input";
-import { Button } from "../ui/button";
+import { Button } from "../_app/ui/button";
 import { Icons } from "../ui/icons";
 import { useAuthLogin, loginFormSchema } from "@/hooks/use-auth-login";
 import { useUser } from "@/hooks/use-user";
@@ -133,7 +133,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               )}
             />
           </div>
-          <div className="mt-4 flex items-center justify-center">
+          <div className="mt-4 flex items-center justify-end">
             <Button disabled={isLoading} type="submit">
               {isLoading && (
                 <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />

@@ -29,23 +29,23 @@ export function ReportCardClientPage({
   const laudo = laudoPart ? laudoPart.slice(0, -4) : `${ultimatePetName} Laudo`;
 
   return (
-    <div className="w-full table-color-style rounded-3xl text-[13px] px-5 mb-5 py-5 space-y-3 flex flex-col">
+    <div className="w-full table-color-style rounded-xl text-[13px] px-5 mb-5 py-5 space-y-3 flex flex-col">
       <div className="h-5 font-medium px-2 mb-2">Pet</div>
-      <div className="flex items-center px-2 h-6 rounded-3xl  mb-4 dark:text-gray-100">
+      <div className="flex items-center px-2 h-6 rounded-xl  mb-4 dark:text-gray-100">
         {ultimatePetName}
       </div>
 
       <div className="w-full">
         <div className="h-5 font-medium">Laudo</div>
       </div>
-      <div className="flex items-center justify-center leading-tight px-2 h-10 rounded-3xl bg-white dark:bg-zinc-800 mb-4 w-full">
+      <div className="flex items-center justify-center leading-tight px-2 h-10 rounded-xl bg-white dark:bg-zinc-800 mb-4 w-full">
         <div className="w-full flex items-center">{laudo}</div>
       </div>
 
       <div className="w-1/2">
         <div className="h-5 font-medium">Data</div>
       </div>
-      <div className="flex items-center px-2 h-6 rounded-3xl bg-white dark:bg-zinc-800 mb-4">
+      <div className="flex items-center px-2 h-6 rounded-xl bg-white dark:bg-zinc-800 mb-4">
         <div className="w-full flex items-center">
           {convertDate(date.toString())}
         </div>

@@ -12,7 +12,7 @@ export default function ExamPortalLayout({
     pathname?.includes("/crm/dashboard") && pathname?.includes("/requisition");
 
   return (
-    <div className="font-productSans">
+    <div className="">
       {children}
     </div>
   );

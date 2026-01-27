@@ -54,7 +54,7 @@ export function ReportTablePetPage({
       ) : reports ? (
         <div className="relative w-full">
           <div className="overflow-x-auto w-full">
-            <Table className="w-full pb-10  rounded-3xl relative table-color-style dark:bg-zinc-800 py-8 px-4">
+            <Table className="w-full pb-10  rounded-xl relative table-color-style dark:bg-zinc-800 py-8 px-4">
               <TableHeader className="font-medium text-sm dark:text-gray-300">
                 <TableRow className=" w-full flex  px-4">
                   <TableHead className="text-start w-[200px] lg:w-[400px]">

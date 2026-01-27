@@ -36,7 +36,7 @@ export function DialogUpdateClientDetail({
     <>
       <Dialog open={isOpen} onOpenChange={setIsOpen} modal={true}>
         <DialogTrigger asChild className={cn(className)}>
-          <Button className="h-10 rounded-3xl w-[160px] gap-2">
+          <Button className="h-10 rounded-xl w-[160px] gap-2">
             Editar
             <SquarePen />
           </Button>

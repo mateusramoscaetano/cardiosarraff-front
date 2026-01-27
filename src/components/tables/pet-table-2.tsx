@@ -42,9 +42,9 @@ export function PetTable2({ pets }: IPetTable2Props) {
 
   return (
     <>
-      <div className="relative w-full table-color-style p-3 rounded-3xl">
+      <div className="relative w-full table-color-style p-3 rounded-xl">
         <div className="overflow-x-auto w-full">
-          <Table className="w-full rounded-3xl relative min-w-[900px] dark:bg-zinc-800 py-3">
+          <Table className="w-full rounded-xl relative min-w-[900px] dark:bg-zinc-800 py-3">
             <TableHeader className="font-medium text-sm dark:text-gray-300 text-[#1e1e1e]">
               <TableRow className="w-full flex px-4">
                 {(user?.user.role === "adm" ||
@@ -74,13 +74,13 @@ export function PetTable2({ pets }: IPetTable2Props) {
                           <DialogUpdatePet
                             id={item.id}
                             buttonText="Editar"
-                            buttonClassName="h-8 rounded-3xl w-[100px] gap-1 text-xs"
+                            buttonClassName="h-8 rounded-xl w-[100px] gap-1 text-xs"
                           />
                         </div>
                       )}
                       <div
                         className="w-full flex px-4 bg-white hover:bg-primary hover:text-white 
-                    rounded-3xl h-[49px] p-4 mb-2 relative hover-parent cursor-pointer items-center dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700 dark:hover:bg-primary dark:hover:text-white text-[#1e1e1e]"
+                    rounded-xl h-[49px] p-4 mb-2 relative hover-parent cursor-pointer items-center dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700 dark:hover:bg-primary dark:hover:text-white text-[#1e1e1e]"
                         onClick={() => handleClick(item.id)}
                       >
                         <span className="w-[130px] lg:w-[400px] pl-2 truncate">

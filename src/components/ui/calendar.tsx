@@ -78,7 +78,7 @@ function Calendar({
           defaultClassNames.dropdowns
         ),
         dropdown_root: cn(
-          "has-focus:border-ring border-input shadow-xs has-focus:ring-ring/50 has-focus:ring-[3px] relative rounded-md border",
+          "has-focus:border-ring border-input shadow-xs has-focus:ring-ring/50 has-focus:ring-[3px] relative rounded-xl border",
           defaultClassNames.dropdown_root
         ),
         dropdown: cn(
@@ -89,13 +89,13 @@ function Calendar({
           "select-none font-medium",
           captionLayout === "label"
             ? "text-sm"
-            : "[&>svg]:text-muted-foreground flex h-8 items-center gap-1 rounded-md pl-2 pr-1 text-sm [&>svg]:size-3.5",
+            : "[&>svg]:text-muted-foreground flex h-8 items-center gap-1 rounded-xl pl-2 pr-1 text-sm [&>svg]:size-3.5",
           defaultClassNames.caption_label
         ),
         table: "w-full border-collapse",
         weekdays: cn("flex", defaultClassNames.weekdays),
         weekday: cn(
-          "text-muted-foreground flex-1 select-none rounded-md text-[0.8rem] font-normal",
+          "text-muted-foreground flex-1 select-none rounded-xl text-[0.8rem] font-normal",
           defaultClassNames.weekday
         ),
         week: cn("mt-2 flex w-full", defaultClassNames.week),
@@ -118,7 +118,7 @@ function Calendar({
         range_middle: cn("rounded-none", defaultClassNames.range_middle),
         range_end: cn("bg-accent rounded-r-md", defaultClassNames.range_end),
         today: cn(
-          "rounded-md bg-transparent data-[selected=true]:bg-transparent",
+          "rounded-xl bg-transparent data-[selected=true]:bg-transparent",
           defaultClassNames.today
         ),
         outside: cn(
@@ -236,10 +236,10 @@ function CalendarDayButton({
           ? "bg-primary text-primary-foreground border-2 border-blue-700"
           : "",
         modifiers.range_start
-          ? "bg-primary text-primary-foreground rounded-md"
+          ? "bg-primary text-primary-foreground rounded-xl"
           : "",
         modifiers.range_end
-          ? "bg-primary text-primary-foreground rounded-md"
+          ? "bg-primary text-primary-foreground rounded-xl"
           : "",
         modifiers.range_middle
           ? "bg-accent text-accent-foreground rounded-none"
