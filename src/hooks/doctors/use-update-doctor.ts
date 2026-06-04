@@ -6,10 +6,10 @@ import { z } from "zod";
 
 export const updateDoctorFormSchema = z.object({
   email: z.string().email({ message: "Email inválido" }).max(50).optional(),
-  password: z
-    .string()
-    .min(5, "Senha deve conter no mínimo 5 caracteres")
-    .optional(),
+  password: z.union([
+    z.literal(""),
+    z.string().min(5, "Senha deve conter no mínimo 5 caracteres"),
+  ]),
   name: z
     .string()
     .min(5, "Nome deve conter no mínimo 5 caracteres")
