@@ -16,7 +16,10 @@ const config: Config = {
       },
       colors: {
         "error-bg": "#E42C2C",
-        primary: "#5c4373",
+        primary: {
+          DEFAULT: "#5c4373",
+          foreground: "#ffffff",
+        },
         background: "#0C1110",
         accent: "#8A65AE",
         "exa-pink": "#D1BAA2",

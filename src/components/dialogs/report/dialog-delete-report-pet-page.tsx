@@ -68,7 +68,10 @@ export function DialogDeleteReportPetPage({
             <AlertDialogCancel className="bg-primary text-white">
               Cancelar
             </AlertDialogCancel>
-            <AlertDialogAction onClick={() => handleClick(id)}>
+            <AlertDialogAction
+              className="bg-primary text-white hover:bg-primary/90"
+              onClick={() => handleClick(id)}
+            >
               Excluir
             </AlertDialogAction>
           </AlertDialogFooter>
