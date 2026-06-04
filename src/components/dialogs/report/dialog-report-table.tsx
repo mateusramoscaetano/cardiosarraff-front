@@ -305,7 +305,7 @@ e realizando o login com o seu e-mail e a senha.`;
   );
 }
 
-function sanitizePhoneNumber(value: string): string {
+function sanitizePhoneNumber(value: string | undefined): string {
   if (!value) return "";
   let digits = value.replace(/\D+/g, "");
   if (digits.startsWith("55") && digits.length > 11) digits = digits.slice(2);
