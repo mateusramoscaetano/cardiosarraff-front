@@ -220,7 +220,6 @@ e realizando o login com o seu e-mail e a senha.`;
                 Tipo do Exame
               </p>
               <Select
-                modal={false}
                 value={examType || undefined}
                 onValueChange={(value) => {
                   setExamType(value);
