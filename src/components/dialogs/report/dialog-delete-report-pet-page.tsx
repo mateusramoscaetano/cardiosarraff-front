@@ -15,9 +15,6 @@ import { useDeletePet } from "@/hooks/pets/use-delete-pet";
 import { usePets } from "@/hooks/pets/use-pets";
 import { useDeleteReport } from "@/hooks/reports/use-delete-report";
 import { useReports } from "@/hooks/reports/use-reports";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
 
 interface IDialogDeleteReportPetPageProps {
   onClose: () => void;
@@ -31,7 +28,6 @@ export function DialogDeleteReportPetPage({
   className,
 }: IDialogDeleteReportPetPageProps) {
   const { refetch } = useReports(1, "");
-  const router = useRouter();
 
   const { mutateAsync, isLoading } = useDeleteReport(id);
 
@@ -53,16 +49,9 @@ export function DialogDeleteReportPetPage({
         <AlertDialogTrigger asChild>
           <button
             type="button"
-            className={`hover:opacity-80 rounded-xl flex items-center justify-center bg-error-bg hover:bg-error-bg p-1 text-white gap-2 text-sm h-10 w-full font-medium ${className || ""}`}
+            className={`flex h-9 items-center justify-center gap-2 rounded-xl bg-error-bg p-1 text-xs font-medium text-white hover:bg-error-bg hover:opacity-80 ${className || "w-full"}`}
           >
-            {`Excluir Arquivo`}
-            <Image
-              src="/arrow-cursor-2--mouse-select-cursor.png"
-              width={18}
-              height={18}
-              alt="arrow"
-              className="w-auto "
-            />
+            {`Excluir`}
           </button>
         </AlertDialogTrigger>
         <AlertDialogContent className="bg-white text-zinc-600 dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700">

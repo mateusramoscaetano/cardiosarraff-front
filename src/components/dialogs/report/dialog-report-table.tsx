@@ -172,97 +172,132 @@ e realizando o login com o seu e-mail e a senha.`;
             </TableCell>
           </TableRow>
         </DialogTrigger>
-        <DialogContent className="max-w-[520px] rounded-xl bg-[#f2f2f2] text-black dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700">
-          <DialogHeader>
-            <DialogTitle className="font-bold text-2xl dark:text-gray-100">
-              {name}
-            </DialogTitle>
-          </DialogHeader>
+        <DialogContent className="max-w-[480px] gap-0 overflow-hidden rounded-xl border-0 bg-[#f2f2f2] p-0 text-black dark:bg-zinc-900 dark:text-gray-100">
+          <div className="space-y-5 p-6">
+            <DialogHeader className="space-y-1">
+              <DialogTitle className="font-bold text-2xl dark:text-gray-100">
+                {name}
+              </DialogTitle>
+            </DialogHeader>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="space-y-1">
-              <h1 className="font-bold text-sm">Nome do Dono</h1>
-              <p className="font-medium text-sm text-[#575656] dark:text-gray-300">
-                {petOwner}
-              </p>
+            <div className="grid grid-cols-2 gap-x-6 gap-y-4 rounded-xl bg-white p-4 dark:bg-zinc-800">
+              <div className="space-y-1">
+                <p className="text-xs font-semibold uppercase tracking-wide text-[#575656] dark:text-gray-400">
+                  Nome do Dono
+                </p>
+                <p className="text-sm font-medium text-[#1e1e1e] dark:text-gray-100">
+                  {petOwner}
+                </p>
+              </div>
+              <div className="space-y-1">
+                <p className="text-xs font-semibold uppercase tracking-wide text-[#575656] dark:text-gray-400">
+                  Doutor Responsável
+                </p>
+                <p className="text-sm font-medium text-[#1e1e1e] dark:text-gray-100">
+                  {doctor}
+                </p>
+              </div>
+              <div className="space-y-1">
+                <p className="text-xs font-semibold uppercase tracking-wide text-[#575656] dark:text-gray-400">
+                  Data de upload
+                </p>
+                <p className="text-sm font-medium text-[#1e1e1e] dark:text-gray-100">
+                  {date}
+                </p>
+              </div>
+              <div className="space-y-1">
+                <p className="text-xs font-semibold uppercase tracking-wide text-[#575656] dark:text-gray-400">
+                  Clínica
+                </p>
+                <p className="text-sm font-medium text-[#1e1e1e] dark:text-gray-100">
+                  {item.Clinic?.name || "Não informada"}
+                </p>
+              </div>
             </div>
-            <div className="space-y-1">
-              <h1 className="font-bold text-sm">Doutor Responsável</h1>
-              <p className="font-medium text-sm text-[#575656] dark:text-gray-300">
-                {doctor}
+
+            <div className="space-y-2">
+              <p className="text-xs font-semibold uppercase tracking-wide text-[#575656] dark:text-gray-400">
+                Tipo do Exame
               </p>
-            </div>
-            <div className="space-y-1">
-              <h1 className="font-bold text-sm">Data de upload</h1>
-              <p className="font-medium text-sm text-[#575656] dark:text-gray-300">
-                {date}
-              </p>
+              <Select
+                modal={false}
+                value={examType || undefined}
+                onValueChange={(value) => {
+                  setExamType(value);
+                  updateExamType(value);
+                }}
+              >
+                <SelectTrigger className="h-10 w-full border border-gray-300 bg-white focus:outline-none focus:ring-0 dark:border-zinc-600 dark:bg-zinc-800">
+                  <SelectValue placeholder="Selecione o tipo" />
+                </SelectTrigger>
+                <SelectContent position="popper" side="bottom" align="start">
+                  {EXAM_TYPES.map((type) => (
+                    <SelectItem key={type} value={type}>
+                      {type}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
           </div>
 
-          <div className="relative z-10 space-y-1">
-            <h1 className="font-bold text-sm">Tipo do Exame</h1>
-            <Select
-              modal={false}
-              value={examType || undefined}
-              onValueChange={(value) => {
-                setExamType(value);
-                updateExamType(value);
-              }}
-            >
-              <SelectTrigger className="w-full h-10 focus:outline-none focus:ring-0 border-gray-300 border bg-white dark:bg-zinc-800">
-                <SelectValue placeholder="Selecione o tipo" />
-              </SelectTrigger>
-              <SelectContent position="popper" side="top" align="start">
-                {EXAM_TYPES.map((type) => (
-                  <SelectItem key={type} value={type}>
-                    {type}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          {user?.user.role === "adm" && (
-            <div className="relative z-0 grid grid-cols-1 sm:grid-cols-2 gap-2">
-              <Button
-                size="md"
-                variant="primary"
-                className="w-full bg-[#4DCB5B] hover:bg-[#45B850]"
-                onClick={openWhatsAppOwner}
-              >
-                WhatsApp Dono
-              </Button>
-              <Button
-                size="md"
-                variant="primary"
-                className="w-full bg-[#4DCB5B] hover:bg-[#45B850]"
-                onClick={openWhatsAppClinic}
-              >
-                WhatsApp Clínica
-              </Button>
-            </div>
-          )}
-
-          <div className="relative z-0 grid grid-cols-1 sm:grid-cols-2 gap-2">
-            <a
-              className="w-full"
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button size="md" variant="primary" className="w-full">
-                Download do Arquivo
-              </Button>
-            </a>
-
-            {(user?.user.role === "adm" || user?.user.role === "doctor") && (
-              <DialogDeleteReportPetPage
-                onClose={() => setIsOpen(false)}
-                id={item.id}
-                className="w-full"
-              />
+          <div className="space-y-4 border-t border-zinc-200 bg-white/70 p-6 dark:border-zinc-700 dark:bg-zinc-800/70">
+            {user?.user.role === "adm" && (
+              <div className="space-y-2">
+                <p className="text-xs font-semibold uppercase tracking-wide text-[#575656] dark:text-gray-400">
+                  Notificar via WhatsApp
+                </p>
+                <div className="grid grid-cols-2 gap-2">
+                  <Button
+                    size="sm"
+                    variant="primary"
+                    className="h-9 w-full bg-[#4DCB5B] text-xs hover:bg-[#45B850] hover:scale-100"
+                    onClick={openWhatsAppOwner}
+                  >
+                    Dono
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="primary"
+                    className="h-9 w-full bg-[#4DCB5B] text-xs hover:bg-[#45B850] hover:scale-100"
+                    onClick={openWhatsAppClinic}
+                  >
+                    Clínica
+                  </Button>
+                </div>
+              </div>
             )}
+
+            <div className="space-y-2">
+              <p className="text-xs font-semibold uppercase tracking-wide text-[#575656] dark:text-gray-400">
+                Arquivo
+              </p>
+              <div className="grid grid-cols-2 gap-2">
+                <a
+                  className="w-full"
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button
+                    size="sm"
+                    variant="primary"
+                    className="h-9 w-full text-xs hover:scale-100"
+                  >
+                    Download
+                  </Button>
+                </a>
+
+                {(user?.user.role === "adm" ||
+                  user?.user.role === "doctor") && (
+                  <DialogDeleteReportPetPage
+                    onClose={() => setIsOpen(false)}
+                    id={item.id}
+                    className="h-9 w-full text-xs"
+                  />
+                )}
+              </div>
+            </div>
           </div>
         </DialogContent>
       </Dialog>
