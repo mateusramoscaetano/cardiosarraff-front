@@ -1,7 +1,7 @@
 export type TPetOwnerUpdateResponse = {
   id: string;
   name: string;
-  email: string;
+  userName: string;
   phone: string;
   createdAt: Date;
   updatedAt: Date;

@@ -9,6 +9,7 @@ export interface Report {
   id: string;
   url: string;
   path: string;
+  displayName?: string | null;
   createdAt: Date;
   updatedAt: Date;
   pet_id: string;

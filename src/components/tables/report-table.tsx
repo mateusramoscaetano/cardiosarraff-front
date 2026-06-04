@@ -5,7 +5,6 @@ import { DialogReportTable } from "../dialogs/report/dialog-report-table";
 import {
   Table,
   TableBody,
-  TableCell,
   TableHead,
   TableHeader,
   TableRow,
@@ -14,7 +13,7 @@ import { PaginationTable } from "../_dashboard/pagination-table";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/hooks/use-user";
 import useCookie from "@/hooks/use-cookies";
-import { ReportTableSkeleton } from "./report-table-skeleton";
+import { EmptyState } from "../ui/empty-state";
 
 interface IReportTableProps {
   data: ResponseTableReportData;
@@ -42,13 +41,23 @@ export function ReportTable({
     user?.user.role === "adm" || user?.user.role === "doctor";
 
   const displayData = isAdminOrDoctor ? data : dataByClinic;
+  const reports = displayData?.reports || [];
+
+  if (!reports.length) {
+    return (
+      <EmptyState
+        title="Nenhum laudo encontrado"
+        description="Tente ajustar os filtros ou cadastre um novo laudo."
+      />
+    );
+  }
 
   return (
     <div className="relative w-full">
       <div className="overflow-x-auto w-full">
-        <Table className="w-full  pt-9 pb-20 px-10 rounded-xl  relative min-w-[900px] table-color-style">
+        <Table className="w-full pt-9 pb-20 px-4 sm:px-10 rounded-xl relative min-w-[900px] table-color-style">
           <TableHeader className="font-medium text-sm dark:text-gray-300 border-b-0">
-            <TableRow className="w-full flex  px-4">
+            <TableRow className="w-full flex px-4">
               <TableHead className="text-start w-[200px] lg:w-[400px]">
                 Nome
               </TableHead>
@@ -61,8 +70,8 @@ export function ReportTable({
               <TableHead className="w-[30px]"></TableHead>
             </TableRow>
           </TableHeader>
-          <TableBody className="w-full ">
-            {displayData?.reports.map((item) => (
+          <TableBody className="w-full">
+            {reports.map((item) => (
               <DialogReportTable
                 key={item.id}
                 name={item.pet.name}
@@ -78,7 +87,7 @@ export function ReportTable({
       </div>
       <PaginationTable
         currentPage={currentPage}
-        data={displayData?.reports || []}
+        data={reports}
         totalPages={displayData?.totalPages || 1}
         fetchPage={setCurrentPage}
       />

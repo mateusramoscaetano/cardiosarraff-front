@@ -9,6 +9,7 @@ export function useSearchPets(searchTerm: string | undefined) {
 
       return response;
     },
+    enabled: Boolean(searchTerm?.trim()),
   });
 }
 

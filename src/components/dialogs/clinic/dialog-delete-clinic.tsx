@@ -39,10 +39,7 @@ export function DialogDeleteClinic({ id, onClose }: IDialogDeleteClinicProps) {
         refetch();
         setTimeout(() => {
           onClose();
-          toast.success("Clinica excluída com Sucesso", {
-            theme: "light",
-            style: { color: "darkslategray" },
-          });
+          toast.success("Clinica excluída com Sucesso");
         }, 1000);
       },
     });

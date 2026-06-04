@@ -50,7 +50,7 @@ export function UserUpdateClientForm({
   const form = useForm<z.infer<typeof updateClientFormSchema>>({
     resolver: zodResolver(updateClientFormSchema),
     defaultValues: {
-      email: "",
+      userName: "",
       password: "",
       name: "",
       phone: "",
@@ -69,7 +69,7 @@ export function UserUpdateClientForm({
   useEffect(() => {
     if (client) {
       form.reset({
-        email: client.email,
+        userName: client.userName,
         password: "",
         name: client.name,
         phone: client.phone,
@@ -137,10 +137,7 @@ export function UserUpdateClientForm({
         refetchClients();
         setTimeout(() => {
           onClose();
-          toast.success("Cliente Atualizado com Sucesso", {
-            theme: "light",
-            style: { color: "darkslategray" },
-          });
+          toast.success("Cliente Atualizado com Sucesso");
         }, 1000);
       },
       onError: (error) => {
@@ -148,10 +145,10 @@ export function UserUpdateClientForm({
           (error as AxiosError).response?.data as TErrorAlreadyRegistered
         ).message;
 
-        if (errorMessage === "email already registered") {
-          form.setError("email", {
+        if (errorMessage === "userName already registered") {
+          form.setError("userName", {
             type: "server",
-            message: "Este email já está registrado",
+            message: "Este usuário já está registrado",
           });
         }
       },
@@ -172,11 +169,11 @@ export function UserUpdateClientForm({
             isError={isError}
           />
           <DefaultField
-            name="email"
+            name="userName"
             className="mb-4"
             form={form}
-            label="Email"
-            placeholder="Digite o Email do Cliente"
+            label="Usuário"
+            placeholder="Digite o usuário do cliente"
             type="text"
             isError={isError}
           />

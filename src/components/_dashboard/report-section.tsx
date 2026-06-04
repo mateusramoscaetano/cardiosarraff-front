@@ -7,19 +7,14 @@ import { useQuery } from "react-query";
 import { ReportTableSkeleton } from "../tables/report-table-skeleton";
 import { ReportFilters } from "./report-filters";
 import { DialogCreateReport } from "../dialogs/report/dialog-create-report";
-import { Button } from "../_app/ui/button";
-import { useRouter } from "next/navigation";
 
-interface IReportSectionProps {}
-
-export function ReportSection({}: IReportSectionProps) {
+export function ReportSection() {
   const [search, setSearch] = useState<string | undefined>("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [filterType, setFilterType] = useState<string | undefined>("pet");
+  const [filterType, setFilterType] = useState<string | undefined>("all");
   const [filterValue, setFilterValue] = useState<string | undefined>(undefined);
 
   const { user } = useUser();
-  const router = useRouter();
 
   const filters =
     filterType && filterType !== "all" && filterValue
@@ -62,55 +57,53 @@ export function ReportSection({}: IReportSectionProps) {
   }, [search, filterType, filterValue]);
 
   const handleClearFilters = () => {
-    if (filterType === "all") {
-      setSearch(undefined);
-    }
-    setFilterType("pet");
+    setSearch(undefined);
+    setFilterType("all");
     setFilterValue(undefined);
   };
 
   return (
-    <>
-      <div className="w-full mx-auto px-2 sm:px-4 md:px-8 py-6 flex flex-col">
-        <div className="w-full flex flex-col md:flex-row md:items-center mb-9 gap-4 md:gap-6">
-          <div className="text-black md:flex-shrink-0">
-            <h1 className="font-bold text-3xl dark:text-gray-100">Últimos Laudos</h1>
-            <p className="font-medium text-sm text-[#1e1e1e] dark:text-gray-300">
-              Laudos cadastrados em ordem cronológica
-            </p>
-          </div>
-          <div className="flex flex-col md:flex-row w-full md:flex-1 items-center gap-6 md:justify-end">
-            <ReportFilters
-              filterType={filterType}
-              filterValue={filterValue}
-              onFilterTypeChange={setFilterType}
-              onFilterValueChange={setFilterValue}
-              onClearFilters={handleClearFilters}
-              isClinicUser={user?.user.role === "clinic"}
-              search={search}
-              setSearch={setSearch}
-            />
-            <div className="flex items-center gap-3 md:flex-shrink-0">
-              {(user?.user.role === "adm" || user?.user.role === "doctor") && (
-                <DialogCreateReport isOnPetDetailPage={false} />
-              )}
-            </div>
+    <div className="w-full mx-auto px-2 sm:px-4 md:px-8 py-6 pt-12 md:pt-6 flex flex-col">
+      <div className="w-full flex flex-col md:flex-row md:items-center mb-6 gap-4">
+        <div className="text-black md:flex-shrink-0">
+          <h1 className="font-bold text-xl sm:text-2xl md:text-3xl dark:text-gray-100">
+            Últimos Laudos
+          </h1>
+          <p className="font-medium text-sm text-[#1e1e1e] dark:text-gray-300">
+            Laudos cadastrados em ordem cronológica
+          </p>
+        </div>
+        <div className="flex flex-col md:flex-row w-full md:flex-1 items-stretch md:items-center gap-4 md:justify-end">
+          <ReportFilters
+            filterType={filterType}
+            filterValue={filterValue}
+            onFilterTypeChange={setFilterType}
+            onFilterValueChange={setFilterValue}
+            onClearFilters={handleClearFilters}
+            isClinicUser={user?.user.role === "clinic"}
+            search={search}
+            setSearch={setSearch}
+          />
+          <div className="flex items-center justify-center md:justify-end gap-3 md:flex-shrink-0">
+            {(user?.user.role === "adm" || user?.user.role === "doctor") && (
+              <DialogCreateReport isOnPetDetailPage={false} />
+            )}
           </div>
         </div>
-        {isLoading || isFetching ? (
-          <ReportTableSkeleton />
-        ) : reportsData ? (
-          <ReportTable
-            data={reportsData}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-            search={search}
-            dataByClinic={reportsData}
-          />
-        ) : (
-          <div>No data available</div>
-        )}
       </div>
-    </>
+      {isLoading || isFetching ? (
+        <ReportTableSkeleton />
+      ) : reportsData ? (
+        <ReportTable
+          data={reportsData}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          search={search}
+          dataByClinic={reportsData}
+        />
+      ) : (
+        <div>No data available</div>
+      )}
+    </div>
   );
 }

@@ -1,15 +1,20 @@
-import { useMutation, useQuery, useQueryClient } from "react-query";
-import { AuthUser, TLogin } from "@/@types/auth";
+import { useMutation } from "react-query";
+import { AuthUser } from "@/@types/auth";
 import { AxiosResponse } from "axios";
 import { api } from "@/lib/axios";
 import { z } from "zod";
-import { headers } from "next/headers";
+
+export const userNameSchema = z
+  .string({ required_error: "Campo obrigatório" })
+  .min(3, "Usuário deve conter no mínimo 3 caracteres")
+  .max(30, "Usuário deve conter no máximo 30 caracteres")
+  .regex(
+    /^[a-zA-Z0-9_.]+$/,
+    "Usuário pode conter apenas letras, números, underline e ponto"
+  );
 
 export const createClientFormSchema = z.object({
-  email: z
-    .string({ required_error: "Campo obrigatório" })
-    .email({ message: "Email inválido" })
-    .max(50),
+  userName: userNameSchema,
   password: z
     .string({ required_error: "Campo obrigatório" })
     .min(5, "Senha deve conter no mínimo 5 caracteres")

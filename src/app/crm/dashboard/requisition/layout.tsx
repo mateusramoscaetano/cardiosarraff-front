@@ -1,6 +1,7 @@
 "use client";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Inter } from "next/font/google";
+import ToastProvider from "@/app/toast-provider";
 
 const inter = Inter({
   display: "swap",
@@ -16,7 +17,9 @@ export default function RequisitionLayout({
   const queryClient = new QueryClient();
   return (
     <QueryClientProvider client={queryClient}>
-      <div className={inter.className}>{children}</div>
+      <ToastProvider>
+        <div className={inter.className}>{children}</div>
+      </ToastProvider>
     </QueryClientProvider>
   );
 }

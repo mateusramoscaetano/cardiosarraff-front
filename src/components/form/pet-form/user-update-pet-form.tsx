@@ -117,10 +117,7 @@ export function UserUpdatePetForm({
         setTimeout(() => {
           refetch();
           onClose();
-          toast.success("Pet registrado com sucesso", {
-            theme: "light",
-            style: { color: "darkslategray" },
-          });
+          toast.success("Pet registrado com sucesso");
         }, 1000);
       },
       onError: (error) => {
@@ -142,29 +139,29 @@ export function UserUpdatePetForm({
             isError={isError}
             type="text"
           />
-          <DefaultField
-            className="mb-4 "
-            name="age"
-            label="Idade"
-            placeholder="Digite a Idade do Pet"
-            form={form}
-            isError={isError}
-            type="text"
-          />
+          <div className="mb-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <DefaultField
+              name="age"
+              label="Idade"
+              placeholder="Digite a Idade do Pet"
+              form={form}
+              isError={isError}
+              type="text"
+            />
+            <DefaultField
+              name="weight"
+              label="Peso"
+              placeholder="Digite o Peso do Pet"
+              form={form}
+              isError={isError}
+              type="text"
+            />
+          </div>
           <DefaultField
             className="mb-4"
             name="race"
             label="Raça"
             placeholder="Digite a Raça do Pet"
-            form={form}
-            isError={isError}
-            type="text"
-          />
-          <DefaultField
-            className="mb-4"
-            name="weight"
-            label="Peso"
-            placeholder="Digite o Peso do Pet"
             form={form}
             isError={isError}
             type="text"

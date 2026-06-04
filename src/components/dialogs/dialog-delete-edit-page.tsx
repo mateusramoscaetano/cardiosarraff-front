@@ -45,10 +45,7 @@ export function DialogDeleteEditPage({
         refetch();
         setTimeout(() => {
           onClose();
-          toast.success(`${entity}  com Sucesso`, {
-            theme: "light",
-            style: { color: "darkslategray" },
-          });
+          toast.success(`${entity}  com Sucesso`);
         }, 1000);
         router.back();
       },

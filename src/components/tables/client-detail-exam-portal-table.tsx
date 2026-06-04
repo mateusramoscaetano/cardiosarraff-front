@@ -1,35 +1,27 @@
 "use client";
 
 import { ClientDetailTextBox } from "@/components/text-boxes/client-detail-text-box";
-
 import { usePathname } from "next/navigation";
 import { fetchDataClient } from "@/hooks/client/use-client";
 import { useQuery } from "react-query";
 import { Client } from "@/@types/client";
-
 import { fetchDataPetsClientPage } from "@/hooks/pets/use-pet-by-client";
 import { PetTable } from "./pet-table";
-import { DialogCreatePet } from "../dialogs/pet/dialog-create-pet";
 import { ResponsePetsListOnPetOwnerPage } from "@/@types/tpet-table-data";
-import { ReportTablePetPage } from "./report-table-pet-page";
 import { useReportsByClient } from "@/hooks/reports/use-reports-by-client";
 import { ReportTableClientPage } from "./report-table-client-page";
 import { useDoctor } from "@/hooks/doctors/use-doctor";
 import { HeaderClient } from "../_exam-portal/header-client";
-
 import { PetTable2 } from "./pet-table-2";
-import { useEffect, useState } from "react";
 
 interface IClientDetailExamPortalTableProps {
   client?: Client;
-
   data: Client;
   pets: ResponsePetsListOnPetOwnerPage | undefined;
 }
 
 export function ClientDetailExamPortalTable({
   client,
-
   data,
   pets,
 }: IClientDetailExamPortalTableProps) {
@@ -37,15 +29,10 @@ export function ClientDetailExamPortalTable({
   const pathParts = searchParams?.split("/");
   const params = pathParts?.[2];
 
-  const { data: petData } = useReportsByClient(params);
+  const { data: petData, isLoading: isReportsLoading } = useReportsByClient(params);
   const { data: doctor } = useDoctor(client?.doctorId);
 
-  const {
-    data: clients,
-    isLoading,
-    isError,
-    refetch,
-  } = useQuery(["client", params], () => fetchDataClient(params), {
+  useQuery(["client", params], () => fetchDataClient(params), {
     initialData: data,
     keepPreviousData: true,
   });
@@ -59,35 +46,19 @@ export function ClientDetailExamPortalTable({
     }
   );
 
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  if (!isMobile) {
-    return (
-      <div className="relative w-full">
-        <div className="w-full  flex flex-col pt-14 pb-20 px-10 rounded-xl relative">
+  return (
+    <>
+      <div className="hidden md:block relative w-full">
+        <div className="w-full flex flex-col pt-14 pb-20 px-10 rounded-xl relative">
           <div className="w-full table-color-style p-3 rounded-xl mb-10">
             <div className="w-full text-2xl font-semibold tracking-normal mb-3 pl-5 text-[#1e1e1e] dark:text-gray-100">
               {client?.name}
             </div>
-            <div className="w-full space-x-9 flex ">
+            <div className="w-full space-x-9 flex">
               <div className="w-[88%] flex flex-row space-x-9">
                 <ClientDetailTextBox
-                  field={client?.email}
-                  fieldTitle="E-mail"
+                  field={client?.userName}
+                  fieldTitle="Usuário"
                 />
                 <ClientDetailTextBox
                   field={typeof doctor === "string" ? doctor : doctor?.name}
@@ -100,26 +71,23 @@ export function ClientDetailExamPortalTable({
               </div>
             </div>
           </div>
-          <div className="w-full text-2xl font-semibold tracking-normal mb-3 pl-5 text-[#1e1e1e] dark:text-gray-100 ">
+          <div className="w-full text-2xl font-semibold tracking-normal mb-3 pl-5 text-[#1e1e1e] dark:text-gray-100">
             Pets
           </div>
           <PetTable2 pets={petsRefetch} />
-          <div className="w-full text-2xl font-semibold tracking-normal mb-3 pl-5">
+          <div className="w-full text-2xl font-semibold tracking-normal mb-3 pl-5 mt-6">
             Laudos
           </div>
-          {petData && <ReportTableClientPage data={petData} />}
+          <ReportTableClientPage data={petData} />
         </div>
       </div>
-    );
-  }
 
-  return (
-    <>
-      <div className="relative w-full">
-        <div className="w-full flex flex-col  pt-14 pb-4  rounded-xl text-[#1e1e1e] dark:text-gray-100 relative">
+      <div className="md:hidden relative w-full px-4 pb-6">
+        <div className="w-full flex flex-col pt-14 rounded-xl text-[#1e1e1e] dark:text-gray-100 relative">
           <HeaderClient client={client} />
         </div>
-        <PetTable data={petData} />
+        <div className="text-lg font-semibold mt-6 mb-4">Meus laudos</div>
+        <PetTable data={petData} isLoading={isReportsLoading} />
       </div>
     </>
   );

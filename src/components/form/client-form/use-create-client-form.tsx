@@ -36,7 +36,7 @@ export function UserCreateClientForm({
   const form = useForm<z.infer<typeof createClientFormSchema>>({
     resolver: zodResolver(createClientFormSchema),
     defaultValues: {
-      email: "",
+      userName: "",
       password: "",
       name: "",
       phone: "",
@@ -64,10 +64,7 @@ export function UserCreateClientForm({
         refetch();
         setTimeout(() => {
           onClose();
-          toast.success("Cliente Criado com Sucesso", {
-            theme: "light",
-            style: { color: "darkslategray" },
-          });
+          toast.success("Cliente Criado com Sucesso");
         }, 1000);
       },
       onError: (error) => {
@@ -75,10 +72,10 @@ export function UserCreateClientForm({
           (error as AxiosError).response?.data as TErrorAlreadyRegistered
         ).message;
 
-        if (errorMessage === "email already registered") {
-          form.setError("email", {
+        if (errorMessage === "userName already registered") {
+          form.setError("userName", {
             type: "server",
-            message: "Este email já está registrado",
+            message: "Este usuário já está registrado",
           });
         }
       },
@@ -100,11 +97,11 @@ export function UserCreateClientForm({
           />
 
           <DefaultField
-            name="email"
+            name="userName"
             className="mb-4"
             form={form}
-            label="Email"
-            placeholder="Digite o Email do Cliente"
+            label="Usuário"
+            placeholder="Digite o usuário do cliente"
             type="text"
             isError={isError}
           />

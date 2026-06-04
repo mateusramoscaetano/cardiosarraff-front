@@ -5,7 +5,7 @@ interface Pet {
 export interface Client {
   id: string;
   name: string;
-  email: string;
+  userName: string;
   password: string;
   phone: string;
   createdAt: string;

@@ -39,10 +39,7 @@ export function DialogDeleteDoctor({ id, onClose }: IDialogDeleteDoctorProps) {
         refetch();
         setTimeout(() => {
           onClose();
-          toast.success("Doutor excluído com Sucesso", {
-            theme: "light",
-            style: { color: "darkslategray" },
-          });
+          toast.success("Doutor excluído com Sucesso");
         }, 1000);
       },
     });

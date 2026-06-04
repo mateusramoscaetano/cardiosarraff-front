@@ -25,6 +25,7 @@ import Image from "next/image";
 import { DialogDeleteReportPetPage } from "./dialog-delete-report-pet-page";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { EXAM_TYPES } from "@/constants/exam-types";
 
 interface IDialogTableProps {
   name?: string;
@@ -32,17 +33,9 @@ interface IDialogTableProps {
   date: string;
   doctor: string;
   url: string;
-
   item: DataItem;
+  mobileTriggerLabel?: string;
 }
-
-const EXAM_TYPES = [
-  "Raio X",
-  "Tomografia",
-  "Cardiologia",
-  "Exame Laboratorial",
-  "Ultrassonografia",
-];
 
 export function DialogReportTable({
   name,
@@ -51,6 +44,7 @@ export function DialogReportTable({
   doctor,
   url,
   item,
+  mobileTriggerLabel,
 }: IDialogTableProps) {
   const { user } = useUser();
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -90,7 +84,7 @@ export function DialogReportTable({
 O laudo do seu pet está disponível em nossa plataforma!
 
 Acesse clicando no link https://www.exavet.com.br/exam-portal
-e realizando o login com o seu e-mail e a senha ${petDetails.pet_owner.password}`;
+e realizando o login com o seu usuário e a senha ${petDetails.pet_owner.password}`;
 
       const whatsappUrl = `https://wa.me/55${ownerPhoneNumber}?text=${encodeURIComponent(
         message
@@ -128,7 +122,7 @@ e realizando o login com o seu e-mail e a senha ${petDetails.pet_owner.password}
 O laudo do pet está disponível em nossa plataforma!
 
 Acesse clicando no link https://www.exavet.com.br/exam-portal
-e realizando o login com o seu e-mail e a senha.`;
+e realizando o login com o seu usuário ou email e a senha.`;
 
       const whatsappUrl = `https://wa.me/55${clinicPhoneNumber}?text=${encodeURIComponent(
         message
@@ -143,34 +137,44 @@ e realizando o login com o seu e-mail e a senha.`;
     <>
       <Dialog>
         <DialogTrigger asChild>
-          <TableRow
-            key={item.id}
-            className="text-sm w-full h-[49px] border-none"
-          >
-            <TableCell colSpan={4} className="cursor-pointer">
-              <div
-                className="flex items-center bg-white hover:bg-primary hover:text-white dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700 dark:hover:bg-primary dark:hover:text-white
+          {mobileTriggerLabel ? (
+            <Button
+              type="button"
+              variant="primary"
+              className="w-full h-9 text-xs hover:scale-100"
+            >
+              {mobileTriggerLabel}
+            </Button>
+          ) : (
+            <TableRow
+              key={item.id}
+              className="text-sm w-full h-[49px] border-none"
+            >
+              <TableCell colSpan={4} className="cursor-pointer">
+                <div
+                  className="flex items-center bg-white hover:bg-primary hover:text-white dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700 dark:hover:bg-primary dark:hover:text-white
                 rounded-xl w-full h-[49px] p-4 mb-2 relative hover-parent"
-              >
-                <span className="w-[200px] lg:w-[400px]">
-                  {item.pet.pet_owner.name}
-                </span>
-                <span className="w-[120px]">{item.pet.name}</span>
-                <span className="w-[200px]">
-                  {item.type ? item.type : "Não informado"}
-                </span>
-                <span className="w-[200px]">{item.Clinic.name}</span>
-                <span className="w-[80px]">{convertDate(item.createdAt)}</span>
-                <Image
-                  src="/right-arrow.png"
-                  width={13}
-                  height={13}
-                  alt="arrow"
-                  className="hover-image absolute right-6 w-auto"
-                />
-              </div>
-            </TableCell>
-          </TableRow>
+                >
+                  <span className="w-[200px] lg:w-[400px] truncate">
+                    {item.pet.pet_owner.name}
+                  </span>
+                  <span className="w-[120px]">{item.pet.name}</span>
+                  <span className="w-[200px]">
+                    {item.type ? item.type : "Não informado"}
+                  </span>
+                  <span className="w-[200px]">{item.Clinic.name}</span>
+                  <span className="w-[80px]">{convertDate(item.createdAt)}</span>
+                  <Image
+                    src="/right-arrow.png"
+                    width={13}
+                    height={13}
+                    alt="arrow"
+                    className="hover-image absolute right-6 w-auto"
+                  />
+                </div>
+              </TableCell>
+            </TableRow>
+          )}
         </DialogTrigger>
         <DialogContent className="max-w-[480px] gap-0 overflow-hidden rounded-xl border-0 bg-[#f2f2f2] p-0 text-black dark:bg-zinc-900 dark:text-gray-100">
           <div className="space-y-5 p-6">
@@ -217,7 +221,7 @@ e realizando o login com o seu e-mail e a senha.`;
 
             <div className="space-y-2">
               <p className="text-xs font-semibold uppercase tracking-wide text-[#575656] dark:text-gray-400">
-                Tipo do Exame
+                TIPO DE EXAME
               </p>
               <Select
                 value={examType || undefined}

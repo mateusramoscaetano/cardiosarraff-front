@@ -5,15 +5,15 @@ import { api } from "@/lib/axios";
 import { z } from "zod";
 
 import { TPetOwnerUpdateResponse } from "@/@types/tpet-owner-update-response";
+import { userNameSchema } from "./use-create-client";
 
 export const updateClientFormSchema = z.object({
-  email: z
-    .string({ required_error: "Campo obrigatório" })
-    .email({ message: "Email inválido" })
-    .optional(),
+  userName: userNameSchema.optional(),
   password: z.union([
     z.literal(""),
-    z.string({ required_error: "Campo obrigatório" }).min(5, "Senha deve conter no mínimo 5 caracteres"),
+    z
+      .string({ required_error: "Campo obrigatório" })
+      .min(5, "Senha deve conter no mínimo 5 caracteres"),
   ]),
   name: z
     .string({ required_error: "Campo obrigatório" })

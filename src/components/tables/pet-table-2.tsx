@@ -12,6 +12,7 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useUser } from "@/hooks/use-user";
 import { DialogUpdatePet } from "../dialogs/pet/dialog-update-pet";
+import { EmptyState } from "../ui/empty-state";
 
 interface IPetTable2Props {
   pets:
@@ -39,6 +40,15 @@ export function PetTable2({ pets }: IPetTable2Props) {
       router.push(`/crm/dashboard/client/${clientId}/${id}`);
     }
   };
+
+  if (!pets?.length) {
+    return (
+      <EmptyState
+        title="Nenhum pet cadastrado"
+        description="Seus pets aparecerão aqui quando forem cadastrados pelo veterinário."
+      />
+    );
+  }
 
   return (
     <>

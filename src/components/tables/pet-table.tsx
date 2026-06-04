@@ -1,45 +1,39 @@
 "use client";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import { convertDate } from "@/utils/convertData";
-import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
 import { ReportCardClientPage } from "../cards/report-card-client-page";
-import { ListReportsResponse } from "@/hooks/reports/use-reports-by-pet";
+import { ListReportsResponse } from "@/hooks/reports/use-reports-by-client";
+import { EmptyState } from "../ui/empty-state";
+import { IsLoadingTable } from "./is-loading-table";
 
 interface IPetTableProps {
   data: ListReportsResponse | undefined;
+  isLoading?: boolean;
 }
 
-export function PetTable({ data }: IPetTableProps) {
-  const router = useRouter();
-  const pathName = usePathname();
+export function PetTable({ data, isLoading }: IPetTableProps) {
+  if (isLoading) {
+    return <IsLoadingTable />;
+  }
 
-  const pathParts = pathName?.split("/");
-  const param = pathParts?.[4];
-
-  const handleClick = (id: string) => {
-    router.push(`/crm/dashboard/client/${param}/${id}`);
-  };
+  if (!data?.reports?.length) {
+    return (
+      <EmptyState
+        title="Nenhum laudo disponível"
+        description="Quando seu veterinário enviar um exame, ele aparecerá aqui."
+      />
+    );
+  }
 
   return (
-    <>
-      {data?.reports.map((item) => (
+    <div className="space-y-4">
+      {data.reports.map((item) => (
         <ReportCardClientPage
           key={item.id}
-          petName={item.path}
           path={item.path}
           date={item.createdAt}
-          petOwner={item.petOwner}
           url={item.url}
         />
       ))}
-    </>
+    </div>
   );
 }

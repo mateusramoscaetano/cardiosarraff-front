@@ -104,10 +104,7 @@ export function UserUpdateClinicForm({
         refetch();
         setTimeout(() => {
           onClose();
-          toast.success("Clinica Atualizada com Sucesso", {
-            theme: "light",
-            style: { color: "darkslategray" },
-          });
+          toast.success("Clinica Atualizada com Sucesso");
         }, 1000);
       },
       onError: (error) => {

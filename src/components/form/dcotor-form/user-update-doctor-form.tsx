@@ -112,10 +112,7 @@ export function UserUpdateDoctorForm({
         refetch();
         setTimeout(() => {
           onClose();
-          toast.success("Doutor Atualizado com Sucesso", {
-            theme: "light",
-            style: { color: "darkslategray" },
-          });
+          toast.success("Doutor Atualizado com Sucesso");
         }, 1000);
       },
       onError: (error) => {

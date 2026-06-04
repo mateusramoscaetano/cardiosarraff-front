@@ -39,19 +39,12 @@ import { useReports } from "@/hooks/reports/use-reports";
 import { usePathname } from "next/navigation";
 import { useUser } from "@/hooks/use-user";
 import { useSearchPets } from "@/hooks/pets/use-search-pets";
+import { EXAM_TYPES } from "@/constants/exam-types";
 
 export type TClinicsWithClinicIdAndName = {
   id: string;
   name: string;
 };
-
-const EXAM_TYPES = [
-  "Raio X",
-  "Tomografia",
-  "Cardiologia",
-  "Exame Laboratorial",
-  "Ultrassonografia",
-];
 
 interface IUseCreateReportFormProps
   extends React.HTMLAttributes<HTMLDivElement> {
@@ -96,9 +89,12 @@ export function UseCreateReportForm({
     }
   }, [isOnPetDetailPage, petId, form]);
 
-  const { data: clinicsData } = useClinics(1, searchClinic);
+  const { data: clinicsData, isLoading: isClinicsLoading } = useClinics(
+    1,
+    searchClinic
+  );
 
-  const { data: petsData } = useSearchPets(searchPet);
+  const { data: petsData, isLoading: isPetsLoading } = useSearchPets(searchPet);
   const { mutateAsync, isLoading, isError } = useCreateReport(user?.token);
   const { refetch } = useReports(1, "");
 
@@ -108,7 +104,12 @@ export function UseCreateReportForm({
   const [petsDataFormState, setPetsDataFormState] = useState<Pet[]>([]);
 
   useEffect(() => {
-    if (searchClinic && clinicsData) {
+    if (!searchClinic) {
+      setClinicsWithClinicIdAndName([]);
+      return;
+    }
+
+    if (clinicsData) {
       const selectResultOfClinicsData = clinicsData.clinics.map((clinic) => {
         return { id: clinic.id, name: clinic.name };
       });
@@ -117,10 +118,17 @@ export function UseCreateReportForm({
   }, [clinicsData, searchClinic]);
 
   useEffect(() => {
-    if (searchPet && petsData) {
+    if (!searchPet) {
+      if (!isSelectedPet) {
+        setPetsDataFormState([]);
+      }
+      return;
+    }
+
+    if (petsData && !isSelectedPet) {
       setPetsDataFormState(petsData);
     }
-  }, [searchPet, petsData]);
+  }, [searchPet, petsData, isSelectedPet]);
 
   const queryClient = useQueryClient();
 
@@ -138,20 +146,14 @@ export function UseCreateReportForm({
           },
         });
 
-        toast.success("Laudo cadastrado com sucesso!", {
-          theme: "dark",
-          style: { color: "#E4722C" },
-          progressStyle: { color: "#E4722C", backgroundColor: "#E4722C" },
-        });
+        toast.success("Laudo cadastrado com sucesso!");
 
         setTimeout(() => {
           onClose();
         }, 1000);
       },
       onError: () => {
-        toast.error("Erro ao cadastrar laudo. Verifique os campos e tente novamente.", {
-          theme: "dark",
-        });
+        toast.error("Erro ao cadastrar laudo. Verifique os campos e tente novamente.");
       },
     });
   };
@@ -180,9 +182,7 @@ export function UseCreateReportForm({
               inputPlaceholder="Digite o nome da clínica"
               isSelected={isSelected}
               name="clinicId"
-              resultsLabel={
-                isSelected ? "Clinica Selecionada" : "Clinicas Encontradas"
-              }
+              resultsLabel="Clínicas encontradas"
               search={searchClinic}
               searchValue={searchValueClinic}
               setFilteredArgsWithIdAndName={setClinicsWithClinicIdAndName}
@@ -190,6 +190,7 @@ export function UseCreateReportForm({
               setSearch={setSearchClinic}
               setSearchValue={setSearchValueClinic}
               isError={isError}
+              isLoading={isClinicsLoading}
             />
             {!isOnPetDetailPage && (
               <>
@@ -197,12 +198,10 @@ export function UseCreateReportForm({
                   form={form}
                   filteredArgsWithIdAndName={petsDataFormState}
                   formLabel="Pesquisar Pet"
-                  inputPlaceholder="Digite o nome do pet"
+                  inputPlaceholder="Digite o nome do pet ou do dono"
                   isSelected={isSelectedPet}
                   name="petId"
-                  resultsLabel={
-                    isSelected ? "Pet Selecionado" : "Dono / Pet Encontrados"
-                  }
+                  resultsLabel="Pets encontrados"
                   search={searchPet}
                   searchValue={searchValuePet}
                   setFilteredArgsWithIdAndName={setPetsDataFormState}
@@ -210,6 +209,7 @@ export function UseCreateReportForm({
                   setSearch={setSearchPet}
                   setSearchValue={setSearchValuePet}
                   isError={isError}
+                  isLoading={isPetsLoading}
                 />
               </>
             )}
@@ -220,7 +220,7 @@ export function UseCreateReportForm({
                 name="type"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="p-2">Tipo de Exame</FormLabel>
+                    <FormLabel className="p-2">TIPO DE EXAME</FormLabel>
                     <Select value={field.value} onValueChange={field.onChange}>
                       <FormControl>
                         <SelectTrigger className="w-full h-10 focus:outline-none focus:ring-0 border-gray-300 border-[1px]">

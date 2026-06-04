@@ -23,6 +23,8 @@ type DoctorItem = {
 export type DataItem = {
   id: string;
   url: string;
+  path?: string;
+  displayName?: string | null;
   clinicId?: string;
   pet: Pet;
   type?: string;

@@ -10,7 +10,7 @@ interface ToastProviderProps {
 
 export default function ToastProvider({ children }: ToastProviderProps) {
   const contextClass = {
-    success: "bg-purple-500/60",
+    success: "bg-[#f2f2f2]",
     error: "bg-red-600",
     info: "bg-gray-600",
     warning: "bg-orange-400",
@@ -26,7 +26,11 @@ export default function ToastProvider({ children }: ToastProviderProps) {
           contextClass[context?.type || "default"] +
           " relative flex p-1 min-h-10 rounded-xl justify-between overflow-hidden cursor-pointer"
         }
-        bodyClassName={() => "text-sm font-white font-med block p-3 "}
+        bodyClassName={(context) =>
+          context?.type === "success"
+            ? "text-sm font-medium block p-3 text-[#1e1e1e]"
+            : "text-sm font-white font-med block p-3"
+        }
         position="top-right"
         autoClose={3000}
         icon={false}

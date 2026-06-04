@@ -11,6 +11,10 @@ import { TableCell, TableRow } from "@/components/ui/table";
 import { useUser } from "@/hooks/use-user";
 import { api } from "@/lib/axios";
 import { convertDate } from "@/utils/convertData";
+import {
+  formatPetNameFromPath,
+  formatReportDisplayName,
+} from "@/utils/format-report-display-name";
 import { AxiosResponse } from "axios";
 
 import { useState } from "react";
@@ -37,7 +41,7 @@ interface IDialogReportProps {
   date: string;
   doctor: { name: string };
   url: string;
-  item: ReportPetPage;
+  item: ReportPetPage & { displayName?: string | null };
 }
 
 export function DialogReport({
@@ -64,15 +68,17 @@ export function DialogReport({
                 className="flex items-center bg-white hover:bg-primary hover:text-white 
                   rounded-xl w-full h-[49px] p-4 mb-2 relative hover-parent dark:bg-zinc-900 dark:text-gray-100 dark:border-zinc-700 "
               >
-                <span className="w-[200px] lg:w-[400px] truncate">{`${
-                  item.path
-                    .split("/")[2]
-                    .split(petOwner.replaceAll(" ", "_").toLowerCase())[1]
-                }`}</span>
+                <span className="w-[200px] lg:w-[400px] truncate">
+                  {formatReportDisplayName({
+                    petName: name || formatPetNameFromPath(item.path),
+                    createdAt: item.createdAt,
+                    path: item.path,
+                  })}
+                </span>
                 <span className="w-[200px]">{item.clinic}</span>
                 <span className="w-[200px]">{item.doctor.name}</span>
                 <span className="w-[200px]">
-                  {item.path.split("/")[1].replaceAll("_", " ")}
+                  {formatPetNameFromPath(item.path) || name}
                 </span>
                 <span className="w-[80px]">
                   {convertDate(item.createdAt.toString())}
@@ -131,7 +137,7 @@ export function DialogReport({
               O laudo do seu pet está disponível em nossa plataforma!
       
             Acesse clicando no link https://www.coracardiologia.com.br/exam-portal
-            e realizando o login com o seu e-mail e a senha ${petDetails.pet_owner.password}
+            e realizando o login com o seu usuário e a senha ${petDetails.pet_owner.password}
               `;
 
                 const whatsappUrl = `https://wa.me/55${ownerPhoneNumber}?text=${encodeURIComponent(

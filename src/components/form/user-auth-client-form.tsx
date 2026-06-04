@@ -18,10 +18,12 @@ import {
 import { Input } from "../ui/input";
 import { Button } from "../_app/ui/button";
 import { Icons } from "../ui/icons";
-import { useAuthLogin, loginFormSchema } from "@/hooks/use-auth-login";
+import {
+  useAuthClientLogin,
+  clientLoginFormSchema,
+} from "@/hooks/use-auth-client-login";
 import { useUser } from "@/hooks/use-user";
 import { AxiosError } from "axios";
-import { useAuthClientLogin } from "@/hooks/use-auth-client-login";
 
 interface UserAuthClientFormProps
   extends React.HTMLAttributes<HTMLDivElement> {}
@@ -35,10 +37,10 @@ export function UserAuthClientForm({
   const router = useRouter();
   const { addUser, user } = useUser();
 
-  const form = useForm<z.infer<typeof loginFormSchema>>({
-    resolver: zodResolver(loginFormSchema),
+  const form = useForm<z.infer<typeof clientLoginFormSchema>>({
+    resolver: zodResolver(clientLoginFormSchema),
     defaultValues: {
-      email: "",
+      identifier: "",
       password: "",
     },
   });
@@ -58,9 +60,8 @@ export function UserAuthClientForm({
     }
   }, [user, router]);
 
-  async function onSubmit(values: z.infer<typeof loginFormSchema>) {
+  async function onSubmit(values: z.infer<typeof clientLoginFormSchema>) {
     try {
-      values.email = values.email.toLowerCase();
       const data = await mutateAsync(values);
       const role = data?.user?.role;
       const id = data?.user?.id;
@@ -77,14 +78,13 @@ export function UserAuthClientForm({
     }
   }
 
-  // Extrair mensagem de erro do AxiosError
   const getErrorMessage = () => {
     if (!error) return "";
 
     if (error instanceof AxiosError) {
       const status = error.response?.status;
       if (status === 401) {
-        return "Email ou senha inválidos";
+        return "Usuário ou senha inválidos";
       }
     }
 
@@ -100,14 +100,14 @@ export function UserAuthClientForm({
           <div className="mb-4">
             <FormField
               control={form.control}
-              name="email"
+              name="identifier"
               render={({ field, fieldState }) => (
                 <>
                   <FormItem>
-                    <FormLabel className="p-2">Email</FormLabel>
+                    <FormLabel className="p-2">Usuário ou email</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Digite seu email"
+                        placeholder="Digite seu usuário ou email"
                         {...field}
                         className={
                           fieldState.error ? "border-2 border-red-500" : ""

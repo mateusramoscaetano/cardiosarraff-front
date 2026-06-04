@@ -51,10 +51,7 @@ export function UserCreateClinic({
         refetch();
         setTimeout(() => {
           onClose();
-          toast.success("Clinica Criada com Sucesso", {
-            theme: "light",
-            style: { color: "darkslategray" },
-          });
+          toast.success("Clinica Criada com Sucesso");
         }, 1000);
       },
       onError: (error) => {

@@ -81,10 +81,15 @@ export function UserCreatePetForm({
 
   const { data: pets, refetch } = usePetsClientPage(params);
   const { mutateAsync, isLoading, isError } = useCreatePet();
-  const { data: petOwnerdata } = useClients(1, search);
+  const { data: petOwnerdata, isLoading: isClientsLoading } = useClients(1, search);
 
   useEffect(() => {
-    if (search && petOwnerdata) {
+    if (!search) {
+      setPetOwnerWithPetOwnerIdAndName([]);
+      return;
+    }
+
+    if (petOwnerdata) {
       const selectResultOfPetOwnerData = petOwnerdata.petOwners.map(
         (petOwner) => {
           return { id: petOwner.id, name: petOwner.name };
@@ -104,10 +109,7 @@ export function UserCreatePetForm({
             queryKey: ["pets", "clients", "pets-client"],
           });
           refetch();
-          toast.success("Pet registrado com sucesso", {
-            theme: "light",
-            style: { color: "darkslategray" },
-          });
+          toast.success("Pet registrado com sucesso");
           setTimeout(() => {
             onClose();
           }, 1000);
@@ -134,29 +136,29 @@ export function UserCreatePetForm({
             isError={isError}
             type="text"
           />
-          <DefaultField
-            className="mb-4 "
-            name="age"
-            label="Idade"
-            placeholder="Digite a Idade do Pet"
-            form={form}
-            isError={isError}
-            type="text"
-          />
+          <div className="mb-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <DefaultField
+              name="age"
+              label="Idade"
+              placeholder="Digite a Idade do Pet"
+              form={form}
+              isError={isError}
+              type="text"
+            />
+            <DefaultField
+              name="weight"
+              label="Peso"
+              placeholder="Digite o Peso do Pet"
+              form={form}
+              isError={isError}
+              type="text"
+            />
+          </div>
           <DefaultField
             className="mb-4"
             name="race"
             label="Raça"
             placeholder="Digite a Raça do Pet"
-            form={form}
-            isError={isError}
-            type="text"
-          />
-          <DefaultField
-            className="mb-4"
-            name="weight"
-            label="Peso"
-            placeholder="Digite o Peso do Pet"
             form={form}
             isError={isError}
             type="text"
@@ -204,7 +206,7 @@ export function UserCreatePetForm({
                 formLabel="Pesquisar Clientes"
                 name="pet_owner_id"
                 inputPlaceholder="Digite o Nome do Cliente"
-                resultsLabel="Clientes Encontrados"
+                resultsLabel="Clientes encontrados"
                 isSelected={isSelected}
                 setIsSelected={setIsSelected}
                 search={search}
@@ -212,6 +214,7 @@ export function UserCreatePetForm({
                 setSearch={setSearch}
                 setSearchValue={setSearchValue}
                 isError={isError}
+                isLoading={isClientsLoading}
               />
             </>
           )}

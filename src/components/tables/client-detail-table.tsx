@@ -57,7 +57,7 @@ export function ClientDetailTable({
           </div>
           <div className="w-full  flex flex-col md:flex-row mb-[88px] gap-4">
             <div className="w-[88%] flex flex-col md:flex-row gap-4">
-              <ClientDetailTextBox field={client?.email} fieldTitle="E-mail" />
+              <ClientDetailTextBox field={client?.userName} fieldTitle="Usuário" />
               <ClientDetailTextBox field={doctor?.name} fieldTitle="Doutor" />
               <ClientDetailTextBox
                 field={client?.phone}

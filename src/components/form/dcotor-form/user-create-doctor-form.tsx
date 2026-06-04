@@ -63,10 +63,7 @@ export function UserCreateDoctorForm({
         refetch();
         setTimeout(() => {
           onClose();
-          toast.success("Doutor Criado com Sucesso", {
-            theme: "light",
-            style: { color: "darkslategray" },
-          });
+          toast.success("Doutor Criado com Sucesso");
         }, 1000);
       },
       onError: (error) => {
