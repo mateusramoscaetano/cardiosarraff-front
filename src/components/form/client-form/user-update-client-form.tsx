@@ -70,7 +70,7 @@ export function UserUpdateClientForm({
     if (client) {
       form.reset({
         email: client.email,
-        password: client.password,
+        password: "",
         name: client.name,
         phone: client.phone,
         clinicId: clinicName?.id,
@@ -102,6 +102,13 @@ export function UserUpdateClientForm({
     const updatedFields = Object.keys(values).reduce<
       Partial<z.infer<typeof updateClientFormSchema>>
     >((acc, key) => {
+      if (key === "password") {
+        if (values.password) {
+          acc.password = values.password;
+        }
+        return acc;
+      }
+
       if (
         values[key as keyof z.infer<typeof updateClientFormSchema>] !==
         client?.[key as keyof Client]
@@ -175,13 +182,18 @@ export function UserUpdateClientForm({
           />
           <DefaultField
             name="password"
-            className="mb-4"
+            className="mb-2"
             form={form}
             label="Senha"
-            placeholder="Digite a Senha do Cliente"
-            type="text"
+            placeholder="Digite a nova senha"
+            type="password"
             isError={isError}
           />
+
+          <p className="mb-4 rounded-md bg-yellow-100 px-3 py-2 text-sm text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-200">
+            Se informar uma nova senha, ela será atualizada. Se deixar em
+            branco, a senha atual permanece a mesma.
+          </p>
           <DefaultField
             name="phone"
             className="mb-8"

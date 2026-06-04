@@ -6,10 +6,10 @@ import { z } from "zod";
 
 export const updateClinicFormSchema = z.object({
   email: z.string().email({ message: "Email inválido" }).max(50).optional(),
-  password: z
-    .string()
-    .min(5, "Senha deve conter no mínimo 5 caracteres")
-    .optional(),
+  password: z.union([
+    z.literal(""),
+    z.string().min(5, "Senha deve conter no mínimo 5 caracteres"),
+  ]),
   name: z
     .string()
     .min(5, "Nome deve conter no mínimo 5 caracteres")
@@ -27,19 +27,20 @@ export const updateClinicFormSchema = z.object({
     .optional(),
 });
 
+export type UpdateClinicPayload = Partial<
+  z.infer<typeof updateClinicFormSchema>
+>;
+
 export function useUpdateClinic(id: string) {
   return useMutation({
-    mutationFn: async (data: z.infer<typeof updateClinicFormSchema>) => {
+    mutationFn: async (data: UpdateClinicPayload) => {
       const response = await updateClinic(data, id);
       return response;
     },
   });
 }
 
-async function updateClinic(
-  data: z.infer<typeof updateClinicFormSchema>,
-  id: string
-) {
+async function updateClinic(data: UpdateClinicPayload, id: string) {
   const response: AxiosResponse<Clinic> = await api.put(`/clinic/${id}`, data);
 
   if (response.data) return response.data;

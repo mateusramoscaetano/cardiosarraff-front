@@ -11,10 +11,10 @@ export const updateClientFormSchema = z.object({
     .string({ required_error: "Campo obrigatório" })
     .email({ message: "Email inválido" })
     .optional(),
-  password: z
-    .string({ required_error: "Campo obrigatório" })
-    .min(5, "Senha deve conter no mínimo 5 caracteres")
-    .optional(),
+  password: z.union([
+    z.literal(""),
+    z.string({ required_error: "Campo obrigatório" }).min(5, "Senha deve conter no mínimo 5 caracteres"),
+  ]),
   name: z
     .string({ required_error: "Campo obrigatório" })
     .min(5, "Nome deve conter no mínimo 5 caracteres")
@@ -26,9 +26,13 @@ export const updateClientFormSchema = z.object({
   clinicId: z.string({ required_error: "Campo obrigatório" }).optional(),
 });
 
+export type UpdateClientPayload = Partial<
+  z.infer<typeof updateClientFormSchema>
+>;
+
 export function useUpdateClient(token: string | undefined, id: string) {
   return useMutation({
-    mutationFn: async (data: z.infer<typeof updateClientFormSchema>) => {
+    mutationFn: async (data: UpdateClientPayload) => {
       const response = await updateClient(data, token, id);
       return response;
     },
@@ -36,7 +40,7 @@ export function useUpdateClient(token: string | undefined, id: string) {
 }
 
 async function updateClient(
-  data: z.infer<typeof updateClientFormSchema>,
+  data: UpdateClientPayload,
   token: string | undefined,
   id: string
 ) {

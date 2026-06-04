@@ -22,19 +22,20 @@ export const updateDoctorFormSchema = z.object({
     .optional(),
 });
 
+export type UpdateDoctorPayload = Partial<
+  z.infer<typeof updateDoctorFormSchema>
+>;
+
 export function useUpdateDoctor(id: string) {
   return useMutation({
-    mutationFn: async (data: z.infer<typeof updateDoctorFormSchema>) => {
+    mutationFn: async (data: UpdateDoctorPayload) => {
       const response = await updateDoctor(data, id);
       return response;
     },
   });
 }
 
-async function updateDoctor(
-  data: z.infer<typeof updateDoctorFormSchema>,
-  id: string
-) {
+async function updateDoctor(data: UpdateDoctorPayload, id: string) {
   const response: AxiosResponse<DoctorDetailResponse> = await api.put(
     `/doctor/${id}`,
     data
