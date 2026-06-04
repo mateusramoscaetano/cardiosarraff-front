@@ -97,7 +97,7 @@ export function FieldSearchForm<T extends FieldValues>({
                       onKeyDown={handleKeyPress}
                       className={cn(
                         "text-zinc-600 dark:text-gray-100",
-                        isError && form.getValues("clinicId" as Path<T>) === ""
+                        fieldState.error || (isError && form.getValues(name) === "")
                           ? "border-2 border-red-500"
                           : ""
                       )}
@@ -118,9 +118,10 @@ export function FieldSearchForm<T extends FieldValues>({
                   </div>
                 </FormControl>
                 <FormMessage>
-                  {isError && form.getValues(name) === ""
-                    ? `Campo ${formLabel.split(" ")[1]} obrigatório`
-                    : ""}
+                  {fieldState.error?.message ||
+                    (isError && form.getValues(name) === ""
+                      ? `Campo ${formLabel.split(" ")[1]} obrigatório`
+                      : "")}
                 </FormMessage>
               </FormItem>
               {filteredArgsWithIdAndName.length > 0 && (

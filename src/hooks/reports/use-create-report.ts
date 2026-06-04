@@ -12,10 +12,16 @@ const fileSchema =
     : z.any();
 
 export const createReportFormSchema = z.object({
-  clinicId: z.string({ required_error: "Campo obrigatório" }),
-  petId: z.string({ required_error: "Campo obrigatório" }),
-  file: fileSchema.nullish(),
-  type: z.string({ required_error: "Campo obrigatório" }),
+  clinicId: z
+    .string({ required_error: "Campo obrigatório" })
+    .min(1, "Selecione uma clínica"),
+  petId: z
+    .string({ required_error: "Campo obrigatório" })
+    .min(1, "Selecione um pet"),
+  file: fileSchema,
+  type: z
+    .string({ required_error: "Campo obrigatório" })
+    .min(1, "Selecione o tipo de exame"),
 });
 
 export function useCreateReport(token?: string) {
@@ -31,6 +37,10 @@ async function createReport(
   data: z.infer<typeof createReportFormSchema>,
   token?: string
 ) {
+  if (!data.petId || !data.clinicId) {
+    throw new Error("Selecione a clínica e o pet antes de enviar.");
+  }
+
   const formData = new FormData();
   formData.append("clinicId", data.clinicId);
   formData.append("petId", data.petId);

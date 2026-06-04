@@ -139,7 +139,9 @@ export function DialogReport({
                 )}`;
                 window.open(whatsappUrl, "_blank");
               }}
-            />
+            >
+              WhatsApp Dono
+            </Button>
           )}
           {(user?.user.role === "adm" || user?.user.role === "doctor") && (
             <DialogDeleteReportPetPage

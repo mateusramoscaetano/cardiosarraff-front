@@ -1,6 +1,7 @@
 "use client";
 import { AuthUser } from "@/@types/auth";
 import useCookie from "@/hooks/use-cookies";
+import { setApiAuthToken } from "@/lib/axios";
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { AuthContext } from "./type";
 
@@ -19,7 +20,9 @@ export const AuthProvider = ({ children }: Props) => {
         const existingUser = getCookie("user");
         if (existingUser) {
           try {
-            setUser(JSON.parse(existingUser));
+            const parsedUser = JSON.parse(existingUser) as AuthUser;
+            setUser(parsedUser);
+            setApiAuthToken(parsedUser.token);
           } catch (e) {
             console.error("Error parsing user from cookie:", e);
           }

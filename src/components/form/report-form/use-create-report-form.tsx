@@ -148,7 +148,11 @@ export function UseCreateReportForm({
           onClose();
         }, 1000);
       },
-      onError: (error) => { },
+      onError: () => {
+        toast.error("Erro ao cadastrar laudo. Verifique os campos e tente novamente.", {
+          theme: "dark",
+        });
+      },
     });
   };
 
@@ -258,22 +262,14 @@ export function UseCreateReportForm({
                               event.target.files && event.target.files[0]
                             )
                           }
-                          className={
-                            (cn(
-                              "text-zinc-600 dark:text-gray-100 text-center flex items-center justify-end mt-2"
-                            ),
-                              isError && form.getValues("file") === null
-                                ? "border-2 border-red-500"
-                                : "")
-                          }
+                          className={cn(
+                            "text-zinc-600 dark:text-gray-100 text-center flex items-center justify-end mt-2",
+                            fieldState.error ? "border-2 border-red-500" : ""
+                          )}
                           icon={false}
                         />
                       </FormControl>
-                      <FormMessage>
-                        {isError && form.getValues("file") === null
-                          ? "Campo Arquivo Obrigatório"
-                          : ""}
-                      </FormMessage>
+                      <FormMessage>{fieldState.error?.message}</FormMessage>
                     </FormItem>
                   </>
                 )}

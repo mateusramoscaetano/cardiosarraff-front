@@ -14,6 +14,7 @@ type Pet = {
 type ClinicItem = {
   name: string;
   id: string;
+  phone?: string;
 };
 type DoctorItem = {
   name: string;
@@ -22,8 +23,9 @@ type DoctorItem = {
 export type DataItem = {
   id: string;
   url: string;
+  clinicId?: string;
   pet: Pet;
-  type: string;
+  type?: string;
   Clinic: ClinicItem;
   doctor: DoctorItem;
   createdAt: string;

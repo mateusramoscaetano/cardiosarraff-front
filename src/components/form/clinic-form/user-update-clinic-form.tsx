@@ -166,8 +166,7 @@ export function UserUpdateClinicForm({
             />
 
             <p className="mb-4 rounded-md bg-yellow-100 px-3 py-2 text-sm text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-200">
-              Se informar uma nova senha, ela será atualizada. Se deixar em
-              branco, a senha atual permanece a mesma.
+              Deixe em branco para manter a senha atual.
             </p>
 
             <DefaultField
