@@ -6,7 +6,6 @@ import cn from "@/utils/cn";
 import { Form } from "../form";
 import { Button } from "../../_app/ui/button";
 import { Icons } from "../../ui/icons";
-import { createClientFormSchema } from "@/hooks/client/use-create-client";
 import { AxiosError } from "axios";
 import { useUser } from "@/hooks/use-user";
 import { useQueryClient } from "react-query";
@@ -52,7 +51,7 @@ export function UserCreateDoctorForm({
     event.target.value = formatPhone(value);
   }
 
-  async function onSubmit(values: z.infer<typeof createClientFormSchema>) {
+  async function onSubmit(values: z.infer<typeof createDoctorFormSchema>) {
     values.phone = values.phone.replace(/[^\d]/g, "");
 
     mutateAsync(values, {
