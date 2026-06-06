@@ -141,6 +141,7 @@ export function UserUpdatePetForm({
           />
           <div className="mb-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
             <DefaultField
+              className=""
               name="age"
               label="Idade"
               placeholder="Digite a Idade do Pet"
@@ -149,6 +150,7 @@ export function UserUpdatePetForm({
               type="text"
             />
             <DefaultField
+              className=""
               name="weight"
               label="Peso"
               placeholder="Digite o Peso do Pet"
