@@ -24,9 +24,15 @@ export const createClientFormSchema = z.object({
     .min(5, "Nome deve conter no mínimo 5 caracteres")
     .max(50),
   phone: z
-    .string({ required_error: "Campo obrigatório" })
-    .min(5, "Telefone deve conter no mínimo 5 caracteres")
-    .max(50),
+    .union([
+      z.literal(""),
+      z
+        .string()
+        .min(5, "Telefone deve conter no mínimo 5 caracteres")
+        .max(50),
+    ])
+    .optional()
+    .default(""),
 });
 
 export function useCreateClient(token: string | undefined) {

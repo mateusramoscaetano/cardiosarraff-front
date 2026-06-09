@@ -54,7 +54,9 @@ export function UserCreateClientForm({
   }
 
   async function onSubmit(values: z.infer<typeof createClientFormSchema>) {
-    values.phone = values.phone.replace(/[^\d]/g, "");
+    if (values.phone) {
+      values.phone = values.phone.replace(/[^\d]/g, "");
+    }
 
     mutateAsync(values, {
       onSuccess: async () => {

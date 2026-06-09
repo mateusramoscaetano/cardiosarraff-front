@@ -20,8 +20,10 @@ export const updateClientFormSchema = z.object({
     .min(5, "Nome deve conter no mínimo 5 caracteres")
     .optional(),
   phone: z
-    .string({ required_error: "Campo obrigatório" })
-    .min(5, "Telefone deve conter no mínimo 5 caracteres")
+    .union([
+      z.literal(""),
+      z.string().min(5, "Telefone deve conter no mínimo 5 caracteres"),
+    ])
     .optional(),
   clinicId: z.string({ required_error: "Campo obrigatório" }).optional(),
 });
