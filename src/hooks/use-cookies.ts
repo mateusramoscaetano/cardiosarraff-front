@@ -7,7 +7,7 @@ const useCookie = () => {
 
   const setCookie = (key: string, value: string) =>
     cookies.set(key, value, {
-      expires: 2,
+      expires: 365,
       sameSite: "Lax",
       secure: process.env.NODE_ENV === "production",
     });

@@ -9,7 +9,7 @@ export const userNameSchema = z
   .min(3, "Usuário deve conter no mínimo 3 caracteres")
   .max(30, "Usuário deve conter no máximo 30 caracteres")
   .regex(
-    /^[a-zA-Z0-9_.]+$/,
+    /^[\p{L}\p{N}_.]+$/u,
     "Usuário pode conter apenas letras, números, underline e ponto"
   );
 

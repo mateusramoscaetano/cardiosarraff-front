@@ -51,9 +51,7 @@ export function DefaultField<T extends FieldValues>({
                   type={type}
                 />
               </FormControl>
-              <FormMessage>
-                {isError ? fieldState.error?.message : ""}
-              </FormMessage>
+              <FormMessage>{fieldState.error?.message}</FormMessage>
             </FormItem>
           </>
         )}

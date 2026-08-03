@@ -26,22 +26,12 @@ export function Contato() {
                 </div>
               </div>
               <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4">Telefone</h3>
-              <div className="space-y-2 text-gray-700">
-                <p className="font-semibold text-base md:text-lg">CLINIVET</p>
-                <a
-                  href="tel:+554132574326"
-                  className="text-[#5C4373] hover:text-[#4A3560] transition-colors duration-300 block text-base md:text-lg"
-                >
-                  (41) 3257-4326
-                </a>
-                <p className="font-semibold mt-3 md:mt-4 text-base md:text-lg">DOMICILIAR/VOLANTE</p>
-                <a
-                  href="tel:+5541991910080"
-                  className="text-[#5C4373] hover:text-[#4A3560] transition-colors duration-300 block text-base md:text-lg"
-                >
-                  (41) 99191-0080
-                </a>
-              </div>
+              <a
+                href="tel:+5541991910080"
+                className="text-[#5C4373] hover:text-[#4A3560] transition-colors duration-300 block text-base md:text-lg"
+              >
+                (41) 99191-0080
+              </a>
             </CardContent>
           </Card>
 
@@ -86,7 +76,7 @@ export function Contato() {
               </div>
               <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4">WhatsApp</h3>
               <Link
-                href="https://linktr.ee/cardiosarraff"
+                href="https://wa.me/5541991910080"
                 target="_blank"
                 rel="noopener noreferrer"
               >

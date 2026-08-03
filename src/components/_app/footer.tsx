@@ -93,13 +93,7 @@ export function Footer() {
             <h3 className="text-lg md:text-xl font-bold mb-4 md:mb-6 text-white">Contato</h3>
             <ul className="space-y-3 md:space-y-4 text-white/80">
               <li className="flex flex-col gap-1">
-                <span className="font-semibold text-white text-base md:text-lg">CLINIVET</span>
-                <a href="tel:+554132574326" className="text-base md:text-lg hover:text-white transition-colors duration-300">
-                  (41) 3257-4326
-                </a>
-              </li>
-              <li className="flex flex-col gap-1">
-                <span className="font-semibold text-white text-base md:text-lg">Domiciliar/Volante</span>
+                <span className="font-semibold text-white text-base md:text-lg">Telefone</span>
                 <a href="tel:+5541991910080" className="text-base md:text-lg hover:text-white transition-colors duration-300">
                   (41) 99191-0080
                 </a>
